@@ -200,8 +200,7 @@ figure {
   min-height: 340px;
 }
 
-.adoption-panel .plot-fallback,
-.adoption-panel .static-panel img {
+.adoption-panel .plot-fallback {
   height: 340px;
   object-fit: contain;
   background: white;
@@ -247,10 +246,6 @@ figcaption,
 .three-panel figcaption {
   font-size: 0.84rem;
   line-height: 1.35;
-}
-
-.static-panel figcaption {
-  color: var(--muted);
 }
 
 #citation {

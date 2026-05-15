@@ -1,0 +1,148 @@
+country_name,country_code,adoption_rate,adoption_rate_h1_2025,adoption_rate_h2_2025
+Afghanistan,AFG,5.6,5.15,5.6
+Albania,ALB,16.5,15.79,16.5
+Algeria,DZA,12.0,11.25,12.0
+Angola,AGO,9.7,8.91,9.7
+Argentina,ARG,19.6,17.77,19.6
+Armenia,ARM,6.6,6.22,6.6
+Australia,AUS,36.9,34.5,36.9
+Austria,AUT,31.4,29.15,31.4
+Azerbaijan,AZE,15.5,14.23,15.5
+Bangladesh,BGD,7.1,6.47,7.1
+Belarus,BLR,8.4,7.56,8.4
+Belgium,BEL,36.0,33.49,36.0
+Benin,BEN,9.3,8.71,9.3
+Bolivia,BOL,11.6,10.88,11.6
+Bosnia and Herzegovina,BIH,19.5,18.24,19.5
+Botswana,BWA,13.7,12.83,13.7
+Brazil,BRA,17.1,15.55,17.1
+Bulgaria,BGR,27.3,25.41,27.3
+Burkina Faso,BFA,9.3,8.71,9.3
+Burundi,BDI,6.8,6.37,6.8
+Cambodia,KHM,5.1,4.6,5.1
+Cameroon,CMR,7.8,7.04,7.8
+Canada,CAN,35.0,33.54,35.0
+Central African Republic,CAF,7.8,7.04,7.8
+Chad,TCD,7.8,7.04,7.8
+Chile,CHL,20.8,19.57,20.8
+China,CHN,16.3,15.4,16.3
+Colombia,COL,22.0,20.41,22.0
+Congo,COG,7.8,7.04,7.8
+Congo (DRC),COD,7.8,7.04,7.8
+Costa Rica,CRI,26.5,25.11,26.5
+Cote d'Ivoire,CIV,11.7,10.84,11.7
+Croatia,HRV,23.7,21.8,23.7
+Cuba,CUB,6.1,5.66,6.1
+Czechia,CZE,27.8,26.04,27.8
+Denmark,DNK,28.7,26.65,28.7
+Dominican Republic,DOM,22.7,21.96,22.7
+Ecuador,ECU,17.7,16.99,17.7
+Egypt,EGY,13.4,12.5,13.4
+El Salvador,SLV,16.2,14.59,16.2
+Eritrea,ERI,6.8,6.37,6.8
+Ethiopia,ETH,6.8,6.37,6.8
+Finland,FIN,27.3,25.62,27.3
+France,FRA,44.0,40.93,44.0
+French Guiana,GUF,9.0,8.34,9.0
+Gabon,GAB,13.4,12.31,13.4
+Gambia,GMB,10.9,10.64,10.9
+Georgia,GEO,18.2,17.26,18.2
+Germany,DEU,28.6,26.53,28.6
+Ghana,GHA,9.3,8.71,9.3
+Greece,GRC,19.1,17.73,19.1
+Guatemala,GTM,14.8,13.69,14.8
+Guinea,GIN,9.3,8.71,9.3
+Guinea-Bissau,GNB,9.3,8.71,9.3
+Guyana,GUY,9.0,8.34,9.0
+Haiti,HTI,7.6,7.12,7.6
+Honduras,HND,13.1,12.37,13.1
+Hungary,HUN,29.8,27.91,29.8
+India,IND,15.7,14.23,15.7
+Indonesia,IDN,12.7,11.67,12.7
+Iran,IRN,10.7,9.56,10.7
+Iraq,IRQ,11.2,10.29,11.2
+Ireland,IRL,44.6,41.7,44.6
+Israel,ISR,36.1,33.91,36.1
+Italy,ITA,27.8,25.8,27.8
+Jamaica,JAM,22.1,22.24,22.1
+Japan,JPN,19.1,16.74,19.1
+Jordan,JOR,27.0,25.36,27.0
+Kazakhstan,KAZ,13.7,12.67,13.7
+Kenya,KEN,8.1,7.83,8.1
+Kuwait,KWT,19.1,17.71,19.1
+Kyrgyzstan,KGZ,8.2,7.55,8.2
+Laos,LAO,6.7,5.95,6.7
+Lebanon,LBN,25.7,24.83,25.7
+Lesotho,LSO,9.1,8.77,9.1
+Liberia,LBR,9.3,8.71,9.3
+Libya,LBY,13.7,12.69,13.7
+Lithuania,LTU,22.4,21.04,22.4
+Madagascar,MDG,9.7,8.91,9.7
+Malawi,MWI,9.7,8.91,9.7
+Malaysia,MYS,19.7,18.29,19.7
+Mali,MLI,9.3,8.71,9.3
+Mauritania,MRT,9.3,8.71,9.3
+Mexico,MEX,17.8,16.72,17.8
+Moldova,MDA,17.0,16.65,17.0
+Mongolia,MNG,14.3,12.62,14.3
+Morocco,MAR,10.9,10.55,10.9
+Mozambique,MOZ,9.7,8.91,9.7
+Myanmar,MMR,9.1,8.41,9.1
+Namibia,NAM,13.8,12.96,13.8
+Nepal,NPL,13.0,12.27,13.0
+Netherlands,NLD,38.9,36.33,38.9
+New Zealand,NZL,40.5,37.57,40.5
+Nicaragua,NIC,10.7,9.95,10.7
+Niger,NER,9.3,8.71,9.3
+Nigeria,NGA,9.3,8.71,9.3
+Norway,NOR,46.4,45.34,46.4
+Oman,OMN,24.2,22.6,24.2
+Pakistan,PAK,10.3,9.65,10.3
+Panama,PAN,21.5,20.31,21.5
+Papua New Guinea,PNG,7.3,7.15,7.3
+Paraguay,PRY,11.0,10.12,11.0
+Peru,PER,14.7,13.42,14.7
+Philippines,PHL,18.3,17.07,18.3
+Poland,POL,28.5,26.44,28.5
+Portugal,PRT,24.2,22.44,24.2
+Qatar,QAT,38.3,35.67,38.3
+Romania,ROU,16.2,15.26,16.2
+Russia,RUS,8.0,7.61,8.0
+Rwanda,RWA,6.3,6.05,6.3
+Saudi Arabia,SAU,26.2,23.7,26.2
+Senegal,SEN,12.9,12.41,12.9
+Serbia,SRB,21.5,19.69,21.5
+Sierra Leone,SLE,9.3,8.71,9.3
+Singapore,SGP,60.9,58.63,60.9
+Slovakia,SVK,23.8,22.07,23.8
+Slovenia,SVN,26.5,24.55,26.5
+Somalia,SOM,6.8,6.37,6.8
+South Africa,ZAF,21.1,19.34,21.1
+South Korea,KOR,30.7,25.93,30.7
+South Sudan,SSD,6.8,6.37,6.8
+Spain,ESP,41.8,39.68,41.8
+Sri Lanka,LKA,6.6,6.21,6.6
+Sudan,SDN,6.8,6.37,6.8
+Suriname,SUR,9.0,8.34,9.0
+Sweden,SWE,33.3,31.16,33.3
+Switzerland,CHE,34.8,32.38,34.8
+Syria,SYR,7.1,6.7,7.1
+Taiwan,TWN,28.4,26.38,28.4
+Tajikistan,TJK,5.6,5.15,5.6
+Tanzania,TZA,6.8,6.37,6.8
+Thailand,THA,10.7,9.12,10.7
+Togo,TGO,9.3,8.71,9.3
+Tunisia,TUN,12.7,12.32,12.7
+Turkiye,TUR,14.6,13.38,14.6
+Turkmenistan,TKM,5.6,5.15,5.6
+Uganda,UGA,6.8,6.37,6.8
+Ukraine,UKR,9.0,9.14,9.0
+United Arab Emirates,ARE,64.0,59.45,64.0
+United Kingdom,GBR,38.9,36.38,38.9
+United States,USA,28.3,26.27,28.3
+Uruguay,URY,22.5,20.91,22.5
+Uzbekistan,UZB,6.3,5.73,6.3
+Venezuela,VEN,9.0,8.34,9.0
+Vietnam,VNM,23.5,21.23,23.5
+Zambia,ZMB,12.3,11.73,12.3
+Zimbabwe,ZWE,7.6,6.95,7.6

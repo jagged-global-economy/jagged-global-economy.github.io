@@ -8,9 +8,9 @@
       name="description"
       content="Project page for The Jagged Global Economy: Frontier AI Unevenly Exposes National Economies."
     />
-    <link rel="stylesheet" href="styles.css?v=release-safe-20260515" />
+    <link rel="stylesheet" href="styles.css?v=ms-interactive-20260515" />
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" defer></script>
-    <script src="assets/site.js?v=release-safe-20260515" defer></script>
+    <script src="assets/site.js?v=ms-interactive-20260515" defer></script>
   </head>
   <body>
     <main class="page">
@@ -212,15 +212,19 @@
             />
             <figcaption>OpenAI Signals country-rank percentile.</figcaption>
           </figure>
-          <figure class="static-panel">
+          <figure class="interactive-figure">
+            <div
+              id="plot-adoption-microsoft"
+              class="interactive-plot plot-small"
+              aria-label="Interactive scatter plot of national exposure versus Microsoft AI Diffusion adoption."
+            ></div>
             <img
+              class="plot-fallback"
               src="assets/observed_outcomes_microsoft.png"
               alt="National exposure versus Microsoft generative AI adoption."
             />
             <figcaption>
-              Static reference panel: Microsoft generative AI adoption as percent of
-              working-age population. Country-level Microsoft rows are not
-              redistributed in this public release.
+              Microsoft generative AI adoption as percent of working-age population.
             </figcaption>
           </figure>
         </div>

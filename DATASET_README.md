@@ -13,6 +13,7 @@ mirrors, and non-release drafting material are also excluded.
 - `manifest.csv`: table-level inventory.
 - `data_dictionary.csv`: inferred column-level data dictionary.
 - `source_data_manifest.csv`: upstream source inventory.
+- `DATA_GUIDE.md`: merge logic, join keys, and file-role guide.
 - `croissant.json`: Croissant metadata with core and Responsible AI fields.
 - `DATA_CARD.md`: human-readable documentation and limitations.
 

@@ -1,11 +1,12 @@
 (async function () {
-  const DATA_URL = "assets/interactive_data.json?v=release-safe-20260515";
+  const DATA_URL = "assets/interactive_data.json?v=ms-interactive-20260515";
   const BLUE = "#1f5f8b";
   const TEAL = "#3b8f7b";
   const GOLD = "#b6812e";
   const RED = "#aa4a44";
   const GRAY = "#5f6368";
   const ADOPTION_PLOT_HEIGHT = 340;
+  const ADOPTION_X_RANGE = [0.14, 0.38];
 
   const config = {
     responsive: true,
@@ -257,7 +258,7 @@
         height: ADOPTION_PLOT_HEIGHT,
         margin: { l: 64, r: 14, t: 38, b: 58 },
         title: { text: title, font: { size: 15 } },
-        xaxis: { title: "National AI exposure" },
+        xaxis: { title: "National AI exposure", range: ADOPTION_X_RANGE },
         yaxis: {
           title: yTitle,
           type: series.isLogScale ? "log" : "linear",
@@ -357,6 +358,12 @@
         data.adoption.signals,
         "OpenAI Signals",
         "Rank percentile"
+      ),
+      renderAdoptionPanel(
+        "plot-adoption-microsoft",
+        data.adoption.microsoft,
+        "Microsoft AI Diffusion",
+        "MS GenAI adoption (% WAP)"
       ),
       renderRemittance(data),
     ]);

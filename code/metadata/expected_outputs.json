@@ -175,6 +175,11 @@
       "rows": 141,
       "sha256": "9bcab94bd651402d86957870299a303eca0e387da1876773102574df0ccf7e3a"
     },
+    "validation/microsoft_ai_diffusion_country_adoption.csv": {
+      "columns": 5,
+      "rows": 147,
+      "sha256": "ea296af20f4a9391e4356a5918b9c5099bf19e28f40789b8eea6489aad5f794d"
+    },
     "validation/observed_outcomes_vs_exposure.csv": {
       "columns": 8,
       "rows": 202,

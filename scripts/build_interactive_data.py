@@ -12,6 +12,7 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent
 DATA_DIR = REPO_ROOT / "data"
+MICROSOFT_ADOPTION_PATH = DATA_DIR / "validation/microsoft_ai_diffusion_country_adoption.csv"
 OUT_PATH = REPO_ROOT / "assets/interactive_data.json"
 
 
@@ -149,6 +150,13 @@ def build_white_collar(national_lookup: dict[str, dict]) -> dict:
 
 def build_adoption() -> dict:
     rows = read_csv(DATA_DIR / "validation/observed_outcomes_vs_exposure.csv")
+    exposure_lookup = {
+        row["country_code"]: {
+            "countryName": row["country_name"],
+            "exposure": as_float(row["weighted_exposure"]),
+        }
+        for row in read_csv(DATA_DIR / "core/nation_exposure_enriched.csv")
+    }
     stats = {
         row["source_key"]: {
             "source": row["source"],
@@ -180,23 +188,38 @@ def build_adoption() -> dict:
             "fit": linear_fit(points, "exposure", "value", log_y=is_log_scale),
         }
 
+    microsoft_points = []
+    for row in read_csv(MICROSOFT_ADOPTION_PATH):
+        exposure = exposure_lookup.get(row["country_code"])
+        if not exposure:
+            continue
+        microsoft_points.append(
+            {
+                "countryCode": row["country_code"],
+                "countryName": exposure["countryName"],
+                "exposure": exposure["exposure"],
+                "value": as_float(row["adoption_rate_h2_2025"] or row["adoption_rate"]),
+            }
+        )
+    require_fields(
+        microsoft_points,
+        ["countryCode", "countryName", "exposure", "value"],
+        "adoption.microsoft",
+    )
+    expected_microsoft_n = stats.get("microsoft", {}).get("nCountries")
+    if expected_microsoft_n and len(microsoft_points) != round(expected_microsoft_n):
+        raise ValueError(
+            "adoption.microsoft point count does not match "
+            f"observed_outcomes_vs_exposure_stats.csv: {len(microsoft_points)} "
+            f"!= {round(expected_microsoft_n)}"
+        )
     series["microsoft"] = {
         **stats.get("microsoft", {}),
-        "points": [],
+        "points": microsoft_points,
         "isLogScale": False,
-        "fit": {"points": [], "slope": None, "intercept": None},
-        "note": "Microsoft country-level adoption points are not redistributed in this public release.",
+        "fit": linear_fit(microsoft_points, "exposure", "value"),
     }
     return series
-
-
-def ensure_release_safe(payload: dict) -> None:
-    microsoft_points = payload.get("adoption", {}).get("microsoft", {}).get("points", [])
-    if microsoft_points:
-        raise ValueError(
-            "Release-safe guard failed: public interactive_data.json must not "
-            "include Microsoft country-level adoption rows."
-        )
 
 
 def build_remittance() -> dict:
@@ -230,7 +253,6 @@ def main() -> None:
         "adoption": build_adoption(),
         "remittance": build_remittance(),
     }
-    ensure_release_safe(payload)
     OUT_PATH.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"Wrote {OUT_PATH.relative_to(REPO_ROOT)}")
     print(

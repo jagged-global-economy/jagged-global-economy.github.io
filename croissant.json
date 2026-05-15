@@ -6578,13 +6578,13 @@
       "name": "microsoft_ai_economy_institute",
       "alternateName": "Microsoft AI Economy Institute",
       "url": "https://www.microsoft.com/en-us/corporate-responsibility/topics/ai-economy-institute",
-      "description": "Published cross-country generative AI adoption measures. Version/release: H2 2025 generative AI adoption measure used in paper analysis snapshot.. Processing detail: Cross-country generative AI adoption as share of working-age population.",
+      "description": "Published cross-country generative AI adoption measures. Version/release: H2 2025 generative AI adoption measure used in paper analysis snapshot. Processing detail: Cross-country generative AI adoption as share of working-age population, extracted from the public report table.",
       "version": "1.0.0",
-      "license": "Published report/table terms apply; no standalone open-data redistribution license identified.",
+      "license": "Published report/table terms apply; users should consult Microsoft source terms before downstream reuse of the project-authored extraction.",
       "dateAccessed": "2026-05-02",
       "datePublished": "2026-05-02",
       "citation": "https://www.microsoft.com/en-us/corporate-responsibility/topics/ai-economy-institute",
-      "usageInfo": "Aggregate regression/statistical summaries only; extracted country-level table not redistributed because no standalone open-data redistribution license was identified."
+      "usageInfo": "Project-authored country-level extraction is redistributed for website replication and validation plots; raw report PDF is not redistributed."
     },
     {
       "@type": "sc:Dataset",

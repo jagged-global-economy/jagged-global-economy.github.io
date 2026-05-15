@@ -1,6 +1,6 @@
 # Table Inventory
 
-        - `data/core/nation_exposure_enriched.csv`: National AI exposure with enrichment variables (141 rows, 31 columns)
+- `data/core/nation_exposure_enriched.csv`: National AI exposure with enrichment variables (141 rows, 31 columns)
 - `data/core/nation_exposure_by_sex.csv`: National AI exposure by sex (441 rows, 12 columns)
 - `data/core/isco2_exposure_scores.csv`: ISCO-08 2-digit exposure scores (40 rows, 4 columns)
 - `data/mechanisms/gender_gap.csv`: Gender exposure gap (147 rows, 10 columns)
@@ -18,6 +18,7 @@
 - `data/validation/occupation_validation.csv`: Occupation-level validation (40 rows, 8 columns)
 - `data/validation/observed_outcomes_vs_exposure.csv`: Observed outcomes versus exposure (202 rows, 8 columns)
 - `data/validation/observed_outcomes_vs_exposure_stats.csv`: Observed outcomes versus exposure statistics (3 rows, 5 columns)
+- `data/validation/microsoft_ai_diffusion_country_adoption.csv`: Microsoft AI Diffusion country adoption (147 rows, 5 columns)
 - `data/validation/adoption_predictor_grid.csv`: Adoption predictor R-squared grid (24 rows, 9 columns)
 - `data/validation/appendix_predicting_adoption_regressions.csv`: Adoption regression appendix table (24 rows, 25 columns)
 - `data/validation/appendix_predicting_exposure_regressions.csv`: Exposure regression appendix table (8 rows, 25 columns)
