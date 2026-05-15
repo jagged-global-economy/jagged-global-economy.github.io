@@ -1,12 +1,22 @@
 (async function () {
-  const DATA_URL = "assets/interactive_data.json?v=ms-interactive-20260515";
+  const DATA_URL = "assets/interactive_data.json?v=adoption-uniform-20260515";
   const BLUE = "#1f5f8b";
   const TEAL = "#3b8f7b";
   const GOLD = "#b6812e";
   const RED = "#aa4a44";
   const GRAY = "#5f6368";
+  const GRID = "#e8eaed";
+  const AXIS = "#9aa0a6";
   const ADOPTION_PLOT_HEIGHT = 340;
   const ADOPTION_X_RANGE = [0.14, 0.38];
+  const ADOPTION_X_TICKS = [0.15, 0.2, 0.25, 0.3, 0.35];
+  const ADOPTION_MARKER = {
+    color: BLUE,
+    size: 8,
+    opacity: 0.78,
+    line: { color: "white", width: 0.5 },
+  };
+  const ADOPTION_FIT_LINE = { color: RED, width: 2 };
 
   const config = {
     responsive: true,
@@ -87,9 +97,95 @@
       name,
       x: points.map((point) => point.x),
       y: points.map((point) => point.y),
-      line: { color, width: 2 },
+      line: options.line || { color, width: 2 },
       hoverinfo: "skip",
     };
+  }
+
+  function adoptionAxis(extra = {}) {
+    return {
+      showline: true,
+      linewidth: 1,
+      linecolor: AXIS,
+      gridcolor: GRID,
+      zeroline: false,
+      ticks: "outside",
+      ticklen: 3,
+      tickcolor: AXIS,
+      tickfont: { size: 12 },
+      titlefont: { size: 14 },
+      ...extra,
+    };
+  }
+
+  function adoptionAnnotation(series) {
+    return {
+      xref: "paper",
+      yref: "paper",
+      x: 0.045,
+      y: 0.94,
+      showarrow: false,
+      align: "left",
+      bgcolor: "rgba(255,255,255,0.88)",
+      bordercolor: "#dadce0",
+      borderwidth: 1,
+      borderpad: 5,
+      font: { size: 12 },
+      text:
+        series.spearmanRho !== undefined
+          ? `ρs = ${series.spearmanRho.toFixed(2)}<br>n = ${Math.round(series.nCountries)}`
+          : "",
+    };
+  }
+
+  function adoptionYOptions(series, yTitle) {
+    if (series.isLogScale) {
+      return {
+        title: yTitle,
+        type: "log",
+        range: [-0.35, 2.35],
+        tickmode: "array",
+        tickvals: [1, 3, 10, 30, 100, 200],
+        ticktext: ["1", "3", "10", "30", "100", "200"],
+      };
+    }
+    if (yTitle.includes("Rank percentile")) {
+      return {
+        title: yTitle,
+        type: "linear",
+        range: [0, 1.08],
+        tickmode: "array",
+        tickvals: [0, 0.25, 0.5, 0.75, 1],
+        ticktext: ["0", "0.25", "0.50", "0.75", "1.00"],
+      };
+    }
+    return {
+      title: yTitle,
+      type: "linear",
+      range: [0, 70],
+      tickmode: "array",
+      tickvals: [0, 20, 40, 60],
+      ticktext: ["0", "20", "40", "60"],
+    };
+  }
+
+  function adoptionLayout(series, title, yTitle) {
+    return baseLayout({
+      autosize: true,
+      height: ADOPTION_PLOT_HEIGHT,
+      margin: { l: 64, r: 14, t: 38, b: 58 },
+      title: { text: title, font: { size: 15 }, x: 0.5, xanchor: "center" },
+      xaxis: adoptionAxis({
+        title: "National AI exposure",
+        range: ADOPTION_X_RANGE,
+        tickmode: "array",
+        tickvals: ADOPTION_X_TICKS,
+        tickformat: ".2f",
+      }),
+      yaxis: adoptionAxis(adoptionYOptions(series, yTitle)),
+      annotations: [adoptionAnnotation(series)],
+      showlegend: false,
+    });
   }
 
   async function renderNationalExposure(data) {
@@ -232,7 +328,12 @@
 
   async function renderAdoptionPanel(id, series, title, yTitle) {
     const rows = series.points;
-    const fit = scatterFitTrace(series.fit, "Fit", RED, series.isLogScale ? {} : { yMin: 0 });
+    const fit = scatterFitTrace(
+      series.fit,
+      "Fit",
+      RED,
+      series.isLogScale ? { line: ADOPTION_FIT_LINE } : { yMin: 0, line: ADOPTION_FIT_LINE }
+    );
     const traces = [
       {
         type: "scatter",
@@ -242,7 +343,7 @@
         y: rows.map((row) => row.value),
         text: rows.map((row) => row.countryName),
         customdata: rows.map((row) => [row.countryCode]),
-        marker: { color: BLUE, size: 8, opacity: 0.78, line: { color: "white", width: 0.5 } },
+        marker: ADOPTION_MARKER,
         hovertemplate:
           "<b>%{text}</b> (%{customdata[0]})<br>" +
           "Exposure: %{x:.3f}<br>" +
@@ -253,36 +354,7 @@
     await plot(
       id,
       traces,
-      baseLayout({
-        autosize: true,
-        height: ADOPTION_PLOT_HEIGHT,
-        margin: { l: 64, r: 14, t: 38, b: 58 },
-        title: { text: title, font: { size: 15 } },
-        xaxis: { title: "National AI exposure", range: ADOPTION_X_RANGE },
-        yaxis: {
-          title: yTitle,
-          type: series.isLogScale ? "log" : "linear",
-          rangemode: series.isLogScale ? undefined : "tozero",
-        },
-        annotations: [
-          {
-            xref: "paper",
-            yref: "paper",
-            x: 0.04,
-            y: 0.95,
-            showarrow: false,
-            align: "left",
-            bgcolor: "rgba(255,255,255,0.86)",
-            bordercolor: "#dadce0",
-            borderpad: 5,
-            text:
-              series.spearmanRho !== undefined
-                ? `ρs = ${series.spearmanRho.toFixed(2)}<br>n = ${Math.round(series.nCountries)}`
-                : "",
-          },
-        ],
-        showlegend: false,
-      })
+      adoptionLayout(series, title, yTitle)
     );
   }
 
