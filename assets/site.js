@@ -142,7 +142,7 @@
       font: { size: 12 },
       text:
         series.spearmanRho !== undefined
-          ? `ρ = ${series.spearmanRho.toFixed(2)}<br>n = ${Math.round(series.nCountries)}`
+          ? `ρ<sub>s</sub> = ${series.spearmanRho.toFixed(2)}<br>n = ${Math.round(series.nCountries)}`
           : "",
     };
   }
