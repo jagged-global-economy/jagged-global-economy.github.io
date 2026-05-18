@@ -4,7 +4,7 @@
   const RED = "#aa4a44";
   const GRID = "#e8eaed";
   const AXIS = "#9aa0a6";
-  const SOURCE_TEXT = "Source: The Jagged Global Economy (2026)";
+  const SOURCE_TEXT = "Source: Jagged Global Economy (2026)";
   const ADOPTION_PLOT_HEIGHT = 340;
   const ADOPTION_X_RANGE = [0.14, 0.38];
   const ADOPTION_X_TICKS = [0.15, 0.2, 0.25, 0.3, 0.35];
@@ -123,21 +123,34 @@
   async function downloadPlotImage(el, options) {
     const plotly = getPlotly();
     if (!plotly) throw new Error("Plotly export API is unavailable");
-    if (typeof plotly.downloadImage === "function") {
-      return plotly.downloadImage(el, options);
+    const currentAnnotations = Array.isArray(el.layout?.annotations)
+      ? el.layout.annotations.slice()
+      : [];
+    const exportAnnotations = [...currentAnnotations, sourceAnnotation()];
+    if (typeof plotly.relayout === "function") {
+      await plotly.relayout(el, { annotations: exportAnnotations });
     }
-    if (typeof plotly.toImage !== "function") {
-      throw new Error("Plotly image export is unavailable");
-    }
+    try {
+      if (typeof plotly.downloadImage === "function") {
+        return await plotly.downloadImage(el, options);
+      }
+      if (typeof plotly.toImage !== "function") {
+        throw new Error("Plotly image export is unavailable");
+      }
 
-    const imageUrl = await plotly.toImage(el, options);
-    const link = document.createElement("a");
-    link.href = imageUrl;
-    link.download = `${options.filename}.${options.format}`;
-    document.body.append(link);
-    link.click();
-    link.remove();
-    return undefined;
+      const imageUrl = await plotly.toImage(el, options);
+      const link = document.createElement("a");
+      link.href = imageUrl;
+      link.download = `${options.filename}.${options.format}`;
+      document.body.append(link);
+      link.click();
+      link.remove();
+      return undefined;
+    } finally {
+      if (typeof plotly.relayout === "function") {
+        await plotly.relayout(el, { annotations: currentAnnotations });
+      }
+    }
   }
 
   function addDownloadControls(id, el) {
@@ -149,9 +162,16 @@
     const controls = document.createElement("div");
     controls.className = "figure-downloads";
 
+    const source = document.createElement("span");
+    source.className = "figure-source";
+    source.textContent = SOURCE_TEXT;
+    controls.append(source);
+
+    const actions = document.createElement("span");
+    actions.className = "figure-download-actions";
     const label = document.createElement("span");
     label.textContent = "Download";
-    controls.append(label);
+    actions.append(label);
 
     ["png", "svg"].forEach((format) => {
       const button = document.createElement("button");
@@ -179,9 +199,10 @@
         }
         button.textContent = previous;
       });
-      controls.append(button);
+      actions.append(button);
     });
 
+    controls.append(actions);
     target.insertBefore(controls, el);
   }
 
@@ -328,7 +349,7 @@
         tickformat: ".2f",
       }),
       yaxis: adoptionAxis(adoptionYOptions(series, yTitle)),
-      annotations: [adoptionAnnotation(series), sourceAnnotation({ size: 9 })],
+      annotations: [adoptionAnnotation(series)],
       showlegend: false,
     });
   }
@@ -422,16 +443,6 @@
           countrycolor: "white",
           bgcolor: "white",
         },
-        annotations: [
-          sourceAnnotation({
-            x: 0.01,
-            y: 0.02,
-            xanchor: "left",
-            yanchor: "bottom",
-            align: "left",
-            size: 11,
-          }),
-        ],
       })
     );
     updateCountryInspector(explorer.USA || explorer[rows[0]?.countryCode]);
@@ -503,7 +514,6 @@
             borderpad: 6,
             text: r2 ? `White-collar share R² = ${r2.toFixed(2)}` : "",
           },
-          sourceAnnotation(),
         ],
         showlegend: false,
       })
@@ -593,7 +603,6 @@
         margin: { l: 64, r: 72, t: 28, b: 72 },
         xaxis: { title: "Direct national AI exposure", range: [min, max] },
         yaxis: { title: "Remittance-accounted national AI exposure", range: [min, max] },
-        annotations: [sourceAnnotation()],
         showlegend: false,
       })
     );

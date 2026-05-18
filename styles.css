@@ -198,13 +198,27 @@ figure {
 
 .figure-downloads {
   display: none;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   margin: 0 0 6px;
   color: var(--muted);
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.72rem;
+}
+
+.figure-source {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.figure-download-actions {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
 }
 
 .figure-downloads button {
