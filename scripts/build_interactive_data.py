@@ -94,8 +94,8 @@ def build_national_exposure() -> list[dict]:
             "countryName": row["country_name"],
             "exposure": as_float(row["weighted_exposure"]),
             "employmentK": as_float(row["total_employment_k"]),
-            "region": row["region"],
-            "incomeGroup": row["income_group"],
+            "region": row["region"] or "Not classified",
+            "incomeGroup": row["income_group"] or "Not classified",
             "population2024": as_float(row["population_2024"]),
         }
         points.append(point)
@@ -146,6 +146,81 @@ def build_white_collar(national_lookup: dict[str, dict]) -> dict:
         for row in metrics_rows
     }
     return {"points": points, "metrics": metrics, "fit": linear_fit(points, "wcSharePct", "exposure")}
+
+
+def build_country_explorer(national_lookup: dict[str, dict]) -> dict:
+    enriched_rows = read_csv(DATA_DIR / "core/nation_exposure_enriched.csv")
+    contribution_rows = read_csv(DATA_DIR / "mechanisms/occupation_contributions.csv")
+    occupations_by_country: dict[str, list[dict]] = {}
+
+    for row in contribution_rows:
+        country_code = row["country_code"]
+        occupation = {
+            "iscoCode": row["isco08_2d"],
+            "label": row["description_2d"],
+            "macroSector": row["macro_sector"],
+            "isWhiteCollar": as_bool(row["is_white_collar"]),
+            "employmentSharePct": (as_float(row["employment_share"]) or 0) * 100,
+            "exposureScore": as_float(row["exposure_score"]),
+            "contributionPct": as_float(row["contribution_pct"]),
+        }
+        occupations_by_country.setdefault(country_code, []).append(occupation)
+
+    explorer = {}
+    for row in enriched_rows:
+        country_code = row["country_code"]
+        extra = national_lookup.get(country_code, {})
+        top_occupations = sorted(
+            occupations_by_country.get(country_code, []),
+            key=lambda occupation: occupation["employmentSharePct"],
+            reverse=True,
+        )[:5]
+        explorer[country_code] = {
+            "countryCode": country_code,
+            "countryName": row["country_name"],
+            "region": extra.get("region"),
+            "incomeGroup": extra.get("incomeGroup"),
+            "reliability": row["reliability"],
+            "exposure": as_float(row["weighted_exposure"]),
+            "totalEmploymentK": as_float(row["total_employment_k"]),
+            "topOccupations": top_occupations,
+        }
+
+    critical_country_fields = [
+        "countryCode",
+        "countryName",
+        "region",
+        "incomeGroup",
+        "reliability",
+        "exposure",
+        "totalEmploymentK",
+    ]
+    missing = [
+        (country_code, field)
+        for country_code, country in explorer.items()
+        for field in critical_country_fields
+        if country.get(field) is None or country.get(field) == ""
+    ]
+    if missing:
+        sample = ", ".join(f"{country_code}.{field}" for country_code, field in missing[:5])
+        raise ValueError(f"countryExplorer has missing critical country fields: {sample}")
+
+    occupation_fields = ["iscoCode", "label", "employmentSharePct", "exposureScore", "contributionPct"]
+    occupation_missing = [
+        (country_code, idx, field)
+        for country_code, country in explorer.items()
+        for idx, occupation in enumerate(country["topOccupations"])
+        for field in occupation_fields
+        if occupation.get(field) is None or occupation.get(field) == ""
+    ]
+    if occupation_missing:
+        sample = ", ".join(
+            f"{country_code}.topOccupations[{idx}].{field}"
+            for country_code, idx, field in occupation_missing[:5]
+        )
+        raise ValueError(f"countryExplorer has missing critical occupation fields: {sample}")
+
+    return explorer
 
 
 def build_adoption() -> dict:
@@ -249,6 +324,7 @@ def main() -> None:
     payload = {
         "nationalExposure": national,
         "laborComposition": build_labor_composition(),
+        "countryExplorer": build_country_explorer(national_lookup),
         "whiteCollar": build_white_collar(national_lookup),
         "adoption": build_adoption(),
         "remittance": build_remittance(),
@@ -258,6 +334,7 @@ def main() -> None:
     print(
         "Counts:",
         f"national={len(payload['nationalExposure'])}",
+        f"country_explorer={len(payload['countryExplorer'])}",
         f"white_collar={len(payload['whiteCollar']['points'])}",
         f"anthropic={len(payload['adoption']['anthropic']['points'])}",
         f"openai={len(payload['adoption']['signals']['points'])}",

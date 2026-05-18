@@ -1,10 +1,7 @@
 (async function () {
-  const DATA_URL = "assets/interactive_data.json?v=adoption-uniform-20260515";
+  const DATA_URL = "assets/interactive_data.json?v=atlas-feedback-20260518";
   const BLUE = "#1f5f8b";
-  const TEAL = "#3b8f7b";
-  const GOLD = "#b6812e";
   const RED = "#aa4a44";
-  const GRAY = "#5f6368";
   const GRID = "#e8eaed";
   const AXIS = "#9aa0a6";
   const ADOPTION_PLOT_HEIGHT = 340;
@@ -42,6 +39,17 @@
     });
   }
 
+  function formatPercent(value, digits = 1) {
+    if (value === null || value === undefined || Number.isNaN(value)) return "n/a";
+    return `${Number(value).toFixed(digits)}%`;
+  }
+
+  function formatEmployment(thousands) {
+    if (thousands === null || thousands === undefined || Number.isNaN(thousands)) return "n/a";
+    if (thousands >= 1000) return `${compactNumber(thousands / 1000, 1)}m`;
+    return `${compactNumber(thousands, 0)}k`;
+  }
+
   function baseLayout(extra = {}) {
     return {
       margin: { l: 64, r: 24, t: 28, b: 58 },
@@ -74,6 +82,7 @@
     await Plotly.newPlot(el, traces, layout, config);
     if (figure) figure.classList.remove("plot-rendering");
     markReady(id);
+    return el;
   }
 
   function scatterFitTrace(fit, name, color, options = {}) {
@@ -133,7 +142,7 @@
       font: { size: 12 },
       text:
         series.spearmanRho !== undefined
-          ? `ρs = ${series.spearmanRho.toFixed(2)}<br>n = ${Math.round(series.nCountries)}`
+          ? `ρ = ${series.spearmanRho.toFixed(2)}<br>n = ${Math.round(series.nCountries)}`
           : "",
     };
   }
@@ -188,9 +197,53 @@
     });
   }
 
+  function updateCountryInspector(country) {
+    const root = document.getElementById("country-inspector");
+    if (!root || !country) return;
+
+    const name = document.getElementById("inspector-country");
+    const meta = document.getElementById("inspector-meta");
+    const exposure = document.getElementById("inspector-exposure");
+    const employment = document.getElementById("inspector-employment");
+    const occupations = document.getElementById("inspector-occupations");
+
+    if (name) name.textContent = country.countryName;
+    if (meta) {
+      meta.textContent = `${country.region} · ${country.incomeGroup} · ${country.reliability} reliability`;
+    }
+    if (exposure) exposure.textContent = country.exposure?.toFixed(3) || "n/a";
+    if (employment) employment.textContent = `${formatEmployment(country.totalEmploymentK)} workers`;
+    if (!occupations) return;
+
+    occupations.replaceChildren();
+    const topOccupations = country.topOccupations || [];
+    if (!topOccupations.length) {
+      const item = document.createElement("li");
+      item.textContent = "No occupation contribution rows are available for this country.";
+      occupations.append(item);
+      return;
+    }
+
+    topOccupations.forEach((occupation) => {
+      const item = document.createElement("li");
+      const main = document.createElement("span");
+      main.className = "occupation-main";
+      main.textContent = `ISCO ${occupation.iscoCode}: ${occupation.label}`;
+      const detail = document.createElement("span");
+      detail.className = "occupation-meta";
+      detail.textContent =
+        `${formatPercent(occupation.employmentSharePct)} of employment · ` +
+        `exposure ${occupation.exposureScore.toFixed(3)} · ` +
+        `${formatPercent(occupation.contributionPct)} of national score`;
+      item.append(main, detail);
+      occupations.append(item);
+    });
+  }
+
   async function renderNationalExposure(data) {
     const rows = data.nationalExposure;
-    await plot(
+    const explorer = data.countryExplorer || {};
+    const el = await plot(
       "plot-national-exposure",
       [
         {
@@ -200,10 +253,10 @@
           z: rows.map((row) => row.exposure),
           text: rows.map((row) => row.countryName),
           customdata: rows.map((row) => [
+            row.countryCode,
             row.region,
             row.incomeGroup,
             row.employmentK,
-            row.population2024,
           ]),
           colorscale: [
             [0, "#edf3ee"],
@@ -216,14 +269,13 @@
           hovertemplate:
             "<b>%{text}</b><br>" +
             "Exposure: %{z:.3f}<br>" +
-            "Region: %{customdata[0]}<br>" +
-            "Income group: %{customdata[1]}<br>" +
-            "Employment: %{customdata[2]:,.0f}k<br>" +
-            "Population 2024: %{customdata[3]:,.0f}<extra></extra>",
+            "Region: %{customdata[1]}<br>" +
+            "Income group: %{customdata[2]}<br>" +
+            "Employment: %{customdata[3]:,.0f}k<extra></extra>",
         },
       ],
       baseLayout({
-        margin: { l: 0, r: 0, t: 0, b: 0 },
+        margin: { l: 0, r: 0, t: 0, b: 4 },
         geo: {
           projection: { type: "natural earth" },
           showframe: false,
@@ -236,36 +288,11 @@
         },
       })
     );
-  }
-
-  async function renderLaborComposition(data) {
-    const composition = data.laborComposition;
-    const countries = composition.countries.map((row) => row.countryName).reverse();
-    const colors = [BLUE, GOLD, TEAL, GRAY];
-    const traces = composition.categories.map((category, index) => {
-      const values = composition.countries.map((row) => row.shares[category]).reverse();
-      return {
-        type: "bar",
-        orientation: "h",
-        name: category,
-        y: countries,
-        x: values,
-        marker: { color: colors[index] },
-        customdata: values.map((value) => [category, value]),
-        hovertemplate: "<b>%{y}</b><br>%{customdata[0]}: %{customdata[1]:.1f}%<extra></extra>",
-      };
+    updateCountryInspector(explorer.USA || explorer[rows[0]?.countryCode]);
+    el.on("plotly_click", (event) => {
+      const countryCode = event?.points?.[0]?.location;
+      updateCountryInspector(explorer[countryCode]);
     });
-    await plot(
-      "plot-labor-composition",
-      traces,
-      baseLayout({
-        barmode: "stack",
-        margin: { l: 116, r: 20, t: 20, b: 48 },
-        xaxis: { title: "Employment share (%)", range: [0, 100], ticksuffix: "%" },
-        yaxis: { automargin: true },
-        legend: { orientation: "h", y: -0.18 },
-      })
-    );
   }
 
   async function renderWhiteCollar(data) {
@@ -417,7 +444,6 @@
     const data = await loadData();
     await Promise.all([
       renderNationalExposure(data),
-      renderLaborComposition(data),
       renderWhiteCollar(data),
       renderAdoptionPanel(
         "plot-adoption-anthropic",

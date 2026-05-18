@@ -31,9 +31,9 @@ a {
 }
 
 .page {
-  width: min(980px, calc(100% - 36px));
+  width: min(1180px, calc(100% - 36px));
   margin: 0 auto;
-  padding: 54px 0 34px;
+  padding: 28px 0 34px;
 }
 
 .paper-header {
@@ -48,22 +48,26 @@ p {
 }
 
 h1 {
-  max-width: 840px;
-  margin: 0 auto 28px;
-  font-size: clamp(30px, 3.2vw, 44px);
-  line-height: 1.1;
+  max-width: 1080px;
+  margin: 0 auto 6px;
+  font-size: clamp(32px, 3.6vw, 46px);
+  line-height: 1.04;
   font-weight: 700;
   letter-spacing: 0;
   overflow-wrap: break-word;
 }
 
-.mobile-only {
-  display: none;
+.subtitle {
+  margin: 0 auto 16px;
+  color: var(--muted);
+  font-size: clamp(1.08rem, 1.7vw, 1.28rem);
+  line-height: 1.25;
+  text-align: center;
 }
 
 h2 {
-  margin-bottom: 20px;
-  font-size: clamp(1.65rem, 3vw, 2.3rem);
+  margin-bottom: 14px;
+  font-size: clamp(1.55rem, 2.6vw, 2.05rem);
   line-height: 1.16;
   text-align: left;
 }
@@ -71,9 +75,10 @@ h2 {
 .authors {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 24px;
-  margin: 0 auto 26px;
-  font-size: 1rem;
+  gap: 12px;
+  max-width: 840px;
+  margin: 0 auto 14px;
+  font-size: 0.88rem;
 }
 
 .authors div {
@@ -89,9 +94,9 @@ h2 {
 
 .authors div > span:last-child {
   display: block;
-  margin-top: 4px;
+  margin-top: 2px;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.8rem;
   line-height: 1.3;
 }
 
@@ -100,15 +105,15 @@ h2 {
   justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 26px;
+  margin-bottom: 18px;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 .links a {
-  min-height: 36px;
+  min-height: 32px;
   display: inline-flex;
   align-items: center;
-  padding: 6px 13px;
+  padding: 5px 12px;
   border: 1px solid var(--line);
   border-radius: 3px;
   background: var(--soft);
@@ -124,15 +129,15 @@ h2 {
 }
 
 .lead {
-  max-width: 900px;
+  max-width: 920px;
   margin: 0 auto;
   text-align: left;
-  font-size: 1.08rem;
+  font-size: 1rem;
   overflow-wrap: break-word;
 }
 
 hr {
-  margin: 38px 0;
+  margin: 28px 0;
   border: 0;
   border-top: 1px solid var(--line);
 }
@@ -192,7 +197,7 @@ figure {
 }
 
 .plot-map {
-  min-height: 560px;
+  min-height: 640px;
 }
 
 .plot-small {
@@ -229,6 +234,128 @@ figcaption,
   font-size: 0.94rem;
   color: var(--muted);
   text-align: center;
+}
+
+.atlas-section p {
+  max-width: 920px;
+}
+
+.atlas-figure {
+  margin-top: 12px;
+}
+
+.atlas-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 0.76fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.atlas-visual {
+  position: relative;
+  min-width: 0;
+  background: white;
+}
+
+.atlas-visual .interactive-plot,
+.atlas-visual .plot-fallback {
+  border: 0;
+  background: white;
+}
+
+.embedded-source {
+  position: absolute;
+  left: 10px;
+  bottom: 4px;
+  margin: 0;
+  color: #73777c;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.68rem;
+  line-height: 1.2;
+  pointer-events: none;
+}
+
+.country-inspector {
+  align-self: stretch;
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: #fbfbfc;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.42;
+}
+
+.inspector-kicker,
+.metric-label {
+  display: block;
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.country-inspector h3 {
+  margin: 0 0 4px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.45rem;
+  line-height: 1.12;
+}
+
+.inspector-meta {
+  margin-bottom: 16px;
+  color: var(--muted);
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.metric-grid div {
+  padding: 10px;
+  border: 1px solid var(--line);
+  background: white;
+}
+
+.metric-grid strong {
+  display: block;
+  font-size: 1.22rem;
+  line-height: 1.1;
+}
+
+.country-inspector h4 {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+}
+
+.occupation-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.occupation-list li {
+  padding-left: 2px;
+}
+
+.occupation-main,
+.occupation-meta {
+  display: block;
+}
+
+.occupation-main {
+  font-weight: 700;
+}
+
+.occupation-meta {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.8rem;
 }
 
 .three-panel {
@@ -309,6 +436,14 @@ footer {
     min-height: 390px;
   }
 
+  .atlas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .plot-map {
+    min-height: 460px;
+  }
+
   .plot-small {
     height: 340px;
     min-height: 340px;
@@ -329,11 +464,7 @@ footer {
   }
 
   h1 {
-    font-size: clamp(23px, 5.6vw, 27px);
-  }
-
-  .mobile-only {
-    display: block;
+    font-size: clamp(30px, 9vw, 39px);
   }
 
   .authors {
@@ -364,5 +495,17 @@ footer {
   .copy-button {
     position: static;
     margin-bottom: 10px;
+  }
+
+  .plot-map {
+    min-height: 390px;
+  }
+
+  .country-inspector {
+    padding: 14px;
+  }
+
+  .metric-grid {
+    grid-template-columns: 1fr;
   }
 }
