@@ -231,7 +231,7 @@ figure {
 }
 
 .plot-map {
-  min-height: 640px;
+  min-height: 680px;
 }
 
 .plot-small {
@@ -283,13 +283,16 @@ figcaption,
 }
 
 .atlas-figure {
+  width: min(1440px, calc(100vw - 36px));
   margin-top: 12px;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 .atlas-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(380px, 0.95fr);
-  gap: 24px;
+  grid-template-columns: minmax(0, 2fr) minmax(400px, 0.8fr);
+  gap: 20px;
   align-items: stretch;
 }
 
@@ -562,6 +565,12 @@ footer {
 
   .plot-map {
     min-height: 390px;
+  }
+
+  .atlas-figure {
+    width: 100%;
+    margin-left: 0;
+    transform: none;
   }
 
   .country-inspector {
