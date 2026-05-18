@@ -332,8 +332,17 @@
       "plot-white-collar",
       traces,
       baseLayout({
-        xaxis: { title: "White-collar employment share (%)", ticksuffix: "%" },
-        yaxis: { title: "National AI exposure" },
+        xaxis: {
+          title: "White-collar employment share (%)",
+          ticksuffix: "%",
+          zeroline: false,
+          gridcolor: GRID,
+        },
+        yaxis: {
+          title: "National AI exposure",
+          zeroline: false,
+          gridcolor: GRID,
+        },
         annotations: [
           {
             xref: "paper",
