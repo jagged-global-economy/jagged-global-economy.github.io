@@ -167,11 +167,6 @@
     const controls = document.createElement("div");
     controls.className = "figure-downloads";
 
-    const source = document.createElement("span");
-    source.className = "figure-source";
-    source.textContent = SOURCE_TEXT;
-    controls.append(source);
-
     const actions = document.createElement("span");
     actions.className = "figure-download-actions";
     ["png"].forEach((format) => {

@@ -212,7 +212,7 @@ figure {
 
 .figure-downloads {
   display: none;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   gap: 12px;
   margin: 0 0 8px;
@@ -220,11 +220,6 @@ figure {
   color: var(--muted);
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.72rem;
-}
-
-.figure-source {
-  min-width: 0;
-  line-height: 1.25;
 }
 
 .figure-download-actions {
@@ -282,10 +277,6 @@ figure {
 }
 
 .interactive-figure.plot-ready .plot-fallback {
-  display: none;
-}
-
-.interactive-figure.plot-ready .embedded-source {
   display: none;
 }
 
@@ -351,18 +342,6 @@ figcaption,
 .atlas-visual .plot-fallback {
   border: 0;
   background: white;
-}
-
-.embedded-source {
-  position: absolute;
-  left: 10px;
-  bottom: 4px;
-  margin: 0;
-  color: #73777c;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.68rem;
-  line-height: 1.2;
-  pointer-events: none;
 }
 
 .country-inspector {
