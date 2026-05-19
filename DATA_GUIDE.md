@@ -70,11 +70,12 @@ bilateral remittance inflow shares.
 - `data/mechanisms/occupation_contributions.csv` decomposes country exposure
   into country-occupation contributions.
 - `data/validation/observed_outcomes_vs_exposure.csv` contains the
-  release-supported Anthropic and OpenAI country-level validation rows.
+  release-supported Anthropic, OpenAI, and Microsoft country-level validation
+  rows.
 - `data/validation/microsoft_ai_diffusion_country_adoption.csv` contains the
-  project-authored country-level extraction from the Microsoft AI Diffusion
-  public report table. The website uses this file only after merging it to the
-  measured national exposure panel by `country_code`.
+  official Microsoft AI Diffusion GitHub Q1 2026 update, matched to ISO alpha-3
+  country codes. The `adoption_rate` alias is the Q1 2026 value; H1 2025 and H2
+  2025 columns are retained for audit and historical comparisons.
 - `data/validation/observed_outcomes_vs_exposure_stats.csv` stores compact
   source-level validation statistics for Anthropic, OpenAI, and Microsoft.
 - `data/indirect/remittance_weighted_exposure.csv` compares direct national
@@ -108,4 +109,3 @@ python3.11 scripts/build_interactive_data.py
 
 That script writes `assets/interactive_data.json`, a compact plotting payload
 containing only the fields needed by the static GitHub Pages site.
-

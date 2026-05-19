@@ -1,5 +1,5 @@
 country_code,country_name,weighted_exposure,outcome_value,source,source_key,metric_label,is_log_scale
-LUX,Luxembourg,0.3715,111.61049653792,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
+LUX,Luxembourg,0.3715,111.61049653791999,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 SGP,Singapore,0.3676,122.01085605958,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 NLD,Netherlands,0.3391,88.74045949561,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 CHE,Switzerland,0.3349,107.01478785386,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
@@ -10,7 +10,7 @@ IRL,Ireland,0.3307,73.06720651905,Anthropic Claude,anthropic,Claude usage / 100k
 GBR,United Kingdom of Great Britain and Northern Ireland,0.3294,81.83557544801,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 DNK,Denmark,0.3239,66.91006069378,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 BEL,Belgium,0.3231,63.85894339724,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
-USA,United States of America,0.3225,100.98150717229,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
+USA,United States of America,0.3225,100.98150717229001,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 CYP,Cyprus,0.3219,72.33545807675999,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 AUS,Australia,0.3217,90.74855922541,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 AUT,Austria,0.3211,57.78093135638,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
@@ -28,7 +28,7 @@ FIN,Finland,0.3089,59.16012249895999,Anthropic Claude,anthropic,Claude usage / 1
 LTU,Lithuania,0.3088,60.98082905218,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 HUN,Hungary,0.3086,26.66009256086,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 BRN,Brunei Darussalam,0.3071,21.51958132459,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
-LVA,Latvia,0.3042,60.91101694915,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
+LVA,Latvia,0.3042,60.911016949149996,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 SVN,Slovenia,0.3041,56.57222659101,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 CZE,Czechia,0.3016,43.62818123956,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 ESP,Spain,0.3011,48.60173975583,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
@@ -40,7 +40,7 @@ BRB,Barbados,0.2864,42.77685985766,Anthropic Claude,anthropic,Claude usage / 100
 MKD,North Macedonia,0.2862,34.94200740119,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 SRB,Serbia,0.2847,39.58912130463,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 BHS,Bahamas,0.2824,30.48045706508,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
-URY,Uruguay,0.2807,26.66731423719,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
+URY,Uruguay,0.2807,26.667314237190002,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 ARE,United Arab Emirates,0.2806,52.66221254509,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 MDV,Maldives,0.2797,39.00965488958,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 CHL,Chile,0.2786,19.97403375611,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
@@ -62,7 +62,7 @@ EGY,Egypt,0.2543,6.254621805983024,Anthropic Claude,anthropic,Claude usage / 100
 PSE,Palestine (State of),0.2534,8.426055184480182,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 PHL,Philippines,0.2523,12.02229792344,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 SLV,El Salvador,0.2511,11.17789609874,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
-THA,Thailand,0.25,12.41236029106,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
+THA,Thailand,0.25,12.412360291059999,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 GUY,Guyana,0.247,8.446516656530846,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 SWZ,Eswatini,0.2438,5.416950411688232,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 PER,Peru,0.2432,14.67318306488,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
@@ -80,7 +80,7 @@ PNG,Papua New Guinea,0.2364,0.7797147023903953,Anthropic Claude,anthropic,Claude
 TUN,Tunisia,0.2364,22.69534364134,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 TGO,Togo,0.2353,5.432692881245188,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 GTM,Guatemala,0.2337,6.272660413035033,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
-GMB,Gambia,0.2337,1.2786178652323985,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
+GMB,Gambia,0.2337,1.2786178652323983,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 NPL,Nepal,0.2326,8.210162750926987,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 PAN,Panama,0.2318,18.82737453104,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 HND,Honduras,0.2314,5.21863299401791,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
@@ -88,10 +88,10 @@ ALB,Albania,0.2302,21.18943353581,Anthropic Claude,anthropic,Claude usage / 100k
 BWA,Botswana,0.2282,9.196225073880484,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 BEN,Benin,0.2272,6.948147450186095,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 GIN,Guinea,0.2271,1.3398111986779233,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
-VNM,Viet Nam,0.2253,9.219600174040789,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
+VNM,Viet Nam,0.2253,9.219600174040787,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 PAK,Pakistan,0.225,5.8644147709446495,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
-MWI,Malawi,0.2225,1.009743125420438,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
-ECU,Ecuador,0.2222,9.73983161989154,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
+MWI,Malawi,0.2225,1.0097431254204379,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
+ECU,Ecuador,0.2222,9.739831619891541,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 TJK,Tajikistan,0.2216,2.1442374957450285,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 KHM,Cambodia,0.2208,4.134044306332152,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 CPV,Cabo Verde,0.2201,10.99248001623,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
@@ -102,12 +102,12 @@ TLS,Timor-Leste,0.2076,2.221484325674279,Anthropic Claude,anthropic,Claude usage
 AGO,Angola,0.2062,1.8747707155414892,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 LAO,Lao People's Democratic Republic,0.2054,3.3195453645512862,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 SLE,Sierra Leone,0.2047,1.1636734290556632,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
-KEN,Kenya,0.1988,9.825919326906275,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
+KEN,Kenya,0.1988,9.825919326906277,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 BFA,Burkina Faso,0.1977,3.3255728987367643,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 ZWE,Zimbabwe,0.1918,3.9193752039536753,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 ZMB,Zambia,0.1872,2.6526535820107644,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 RWA,Rwanda,0.1862,6.0211622348403795,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
-UGA,Uganda,0.182,1.768450902221281,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
+UGA,Uganda,0.182,1.7684509022212813,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 LSO,Lesotho,0.1748,1.874451983135486,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 TZA,"Tanzania, United Republic of",0.1733,1.3186927348633977,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
 MDG,Madagascar,0.1662,2.809898525016063,Anthropic Claude,anthropic,Claude usage / 100k WAP (log),True
@@ -201,3 +201,110 @@ TZA,"Tanzania, United Republic of",0.1733,0.1452991452991453,OpenAI Signals,sign
 MDG,Madagascar,0.1662,0.2136752136752137,OpenAI Signals,signals,OpenAI rank percentile,False
 MOZ,Mozambique,0.1618,0.1709401709401709,OpenAI Signals,signals,OpenAI rank percentile,False
 BDI,Burundi,0.144,0.0427350427350426,OpenAI Signals,signals,OpenAI rank percentile,False
+SGP,Singapore,0.3676,63.4,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+NLD,Netherlands,0.3391,42.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+CHE,Switzerland,0.3349,37.8,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+SWE,Sweden,0.334,36.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+ISR,Israel,0.3333,38.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+DEU,Germany,0.333,31.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+IRL,Ireland,0.3307,48.4,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+GBR,United Kingdom of Great Britain and Northern Ireland,0.3294,42.2,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+DNK,Denmark,0.3239,31.2,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+BEL,Belgium,0.3231,39.0,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+USA,United States of America,0.3225,31.3,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+AUS,Australia,0.3217,39.5,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+AUT,Austria,0.3211,34.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+NOR,Norway,0.3196,48.6,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+FRA,France,0.3193,47.8,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+POL,Poland,0.3165,31.0,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+JPN,Japan,0.3161,22.5,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+GRC,Greece,0.3154,20.8,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+PRT,Portugal,0.3139,26.4,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+ITA,Italy,0.313,30.2,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+HRV,Croatia,0.3107,26.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+FIN,Finland,0.3089,29.5,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+LTU,Lithuania,0.3088,24.3,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+HUN,Hungary,0.3086,32.2,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+SVN,Slovenia,0.3041,29.0,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+CZE,Czechia,0.3016,30.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+ESP,Spain,0.3011,44.2,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+RUS,Russian Federation,0.2982,9.5,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+ARG,Argentina,0.2937,21.9,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+BGR,Bulgaria,0.2924,29.7,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+SRB,Serbia,0.2847,24.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+BLR,Belarus,0.2821,9.6,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+URY,Uruguay,0.2807,24.6,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+ARE,United Arab Emirates,0.2806,70.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+CHL,Chile,0.2786,22.7,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+BRA,Brazil,0.2783,19.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+CRI,Costa Rica,0.274,28.5,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+ROU,Romania,0.2717,17.5,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+SUR,Suriname,0.2703,10.3,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+JAM,Jamaica,0.2662,24.0,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+TUR,Türkiye,0.2652,17.4,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+CUB,Cuba,0.2645,6.7,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+DOM,Dominican Republic,0.264,24.8,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+LBN,Lebanon,0.2639,27.3,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+MEX,Mexico,0.2638,20.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+MNG,Mongolia,0.263,16.7,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+BIH,Bosnia and Herzegovina,0.2628,22.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+COL,Colombia,0.2628,24.5,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+SOM,Somalia,0.2586,7.6,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+JOR,Jordan,0.2547,29.7,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+EGY,Egypt,0.2543,14.8,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+IRN,Iran (Islamic Republic of),0.2538,12.6,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+PHL,Philippines,0.2523,20.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+SLV,El Salvador,0.2511,18.3,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+THA,Thailand,0.25,12.4,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+GUY,Guyana,0.247,10.3,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+PER,Peru,0.2432,16.4,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+IRQ,Iraq,0.2428,12.5,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+IDN,Indonesia,0.2419,14.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+BOL,Bolivia (Plurinational State of),0.2413,12.7,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+NER,Niger,0.2412,10.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+KGZ,Kyrgyzstan,0.2401,9.5,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+CIV,Côte d'Ivoire,0.2397,13.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+LKA,Sri Lanka,0.2373,7.3,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+GEO,Georgia,0.237,20.5,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+PNG,Papua New Guinea,0.2364,7.7,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+TUN,Tunisia,0.2364,13.5,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+TGO,Togo,0.2353,10.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+GTM,Guatemala,0.2337,16.4,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+GMB,Gambia,0.2337,11.4,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+NPL,Nepal,0.2326,14.2,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+PAN,Panama,0.2318,23.3,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+HND,Honduras,0.2314,14.0,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+ALB,Albania,0.2302,18.5,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+MMR,Myanmar,0.2293,10.0,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+BWA,Botswana,0.2282,14.8,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+BEN,Benin,0.2272,10.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+GIN,Guinea,0.2271,10.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+VNM,Viet Nam,0.2253,26.5,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+PAK,Pakistan,0.225,11.4,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+MWI,Malawi,0.2225,10.9,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+ECU,Ecuador,0.2222,19.5,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+TJK,Tajikistan,0.2216,6.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+KHM,Cambodia,0.2208,5.7,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+GHA,Ghana,0.22,10.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+BGD,Bangladesh,0.218,7.8,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+IND,India,0.2166,17.6,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+SDN,Sudan,0.2128,7.6,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+AGO,Angola,0.2062,10.9,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+LAO,Lao People's Democratic Republic,0.2054,7.8,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+SLE,Sierra Leone,0.2047,10.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+MLI,Mali,0.2001,10.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+KEN,Kenya,0.1988,8.7,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+BFA,Burkina Faso,0.1977,10.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+COD,"Congo, Democratic Republic of the",0.1969,8.7,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+ZWE,Zimbabwe,0.1918,8.5,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+AFG,Afghanistan,0.1893,6.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+ZMB,Zambia,0.1872,13.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+RWA,Rwanda,0.1862,7.2,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+UGA,Uganda,0.182,7.6,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+GNB,Guinea-Bissau,0.1788,10.1,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+ETH,Ethiopia,0.1767,7.6,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+LSO,Lesotho,0.1748,9.8,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+TZA,"Tanzania, United Republic of",0.1733,7.6,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+MDG,Madagascar,0.1662,10.9,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+MOZ,Mozambique,0.1618,10.9,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False
+BDI,Burundi,0.144,7.6,Microsoft AI Diffusion,microsoft,MS GenAI adoption Q1 2026 (% WAP),False

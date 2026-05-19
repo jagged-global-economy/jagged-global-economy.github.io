@@ -10,13 +10,14 @@ URLs, source roles, and redistribution notes. Raw files are omitted because
 provider terms are mixed, the Hosseini Maasoum and Lichtinger source has no
 verified standalone open-data redistribution license for transformed score
 vectors, and the raw research workspace contains local paths and non-anonymized
-draft material. The Microsoft AI Diffusion country table is included as a
-project-authored extraction from the public report table.
+draft material. Microsoft AI Diffusion country/economy values are included from
+Microsoft's official MIT-licensed GitHub data release after ISO alpha-3 matching.
 
 This package is therefore scoped to reviewer verification: validate released
 tables, recompute headline quantities, and regenerate value-equivalent paper
-tables and supported figures from derived measured data. Microsoft AI Diffusion
-paper claims are supported through both the extracted country table and
-aggregate regression summaries. Hosseini Maasoum and Lichtinger robustness
-claims are supported through aggregate summary statistics and source-linked
-documentation rather than redistributed transformed score vectors.
+tables and supported figures from anonymized derived measured data. Microsoft
+paper claims are supported by the released Microsoft country/economy adoption
+table, aggregate regression summaries, and source-linked documentation.
+Hosseini Maasoum and Lichtinger robustness claims are supported through
+aggregate summary statistics and source-linked documentation rather than
+redistributed transformed score vectors.

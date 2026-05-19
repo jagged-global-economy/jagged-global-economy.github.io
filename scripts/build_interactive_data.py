@@ -273,7 +273,7 @@ def build_adoption() -> dict:
                 "countryCode": row["country_code"],
                 "countryName": exposure["countryName"],
                 "exposure": exposure["exposure"],
-                "value": as_float(row["adoption_rate_h2_2025"] or row["adoption_rate"]),
+                "value": as_float(row.get("adoption_rate_q1_2026") or row["adoption_rate"]),
             }
         )
     require_fields(

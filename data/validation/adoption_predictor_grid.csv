@@ -15,11 +15,11 @@ openai,OpenAI Signals,OpenAI rank percentile,88,WC + log GNI,True,True,False,0.9
 openai,OpenAI Signals,OpenAI rank percentile,88,WC + Exposure,True,False,True,0.8385439926300562
 openai,OpenAI Signals,OpenAI rank percentile,88,log GNI + Exposure,False,True,True,0.8907441538637888
 openai,OpenAI Signals,OpenAI rank percentile,88,WC + log GNI + Exposure,True,True,True,0.9085834726344143
-microsoft,Microsoft AI Diffusion,MS GenAI adoption H2 2025 (% WAP),106,Intercept only,False,False,False,0.0
-microsoft,Microsoft AI Diffusion,MS GenAI adoption H2 2025 (% WAP),106,WC,True,False,False,0.6468157779955652
-microsoft,Microsoft AI Diffusion,MS GenAI adoption H2 2025 (% WAP),106,log GNI,False,True,False,0.5859253839707852
-microsoft,Microsoft AI Diffusion,MS GenAI adoption H2 2025 (% WAP),106,Exposure,False,False,True,0.6053219311140685
-microsoft,Microsoft AI Diffusion,MS GenAI adoption H2 2025 (% WAP),106,WC + log GNI,True,True,False,0.6628175653500689
-microsoft,Microsoft AI Diffusion,MS GenAI adoption H2 2025 (% WAP),106,WC + Exposure,True,False,True,0.6480416655871373
-microsoft,Microsoft AI Diffusion,MS GenAI adoption H2 2025 (% WAP),106,log GNI + Exposure,False,True,True,0.6315265128746252
-microsoft,Microsoft AI Diffusion,MS GenAI adoption H2 2025 (% WAP),106,WC + log GNI + Exposure,True,True,True,0.6629560904794887
+microsoft,Microsoft AI Diffusion,MS GenAI adoption Q1 2026 (% WAP),106,Intercept only,False,False,False,0.0
+microsoft,Microsoft AI Diffusion,MS GenAI adoption Q1 2026 (% WAP),106,WC,True,False,False,0.6511181487451967
+microsoft,Microsoft AI Diffusion,MS GenAI adoption Q1 2026 (% WAP),106,log GNI,False,True,False,0.5986877296897183
+microsoft,Microsoft AI Diffusion,MS GenAI adoption Q1 2026 (% WAP),106,Exposure,False,False,True,0.6111320287167861
+microsoft,Microsoft AI Diffusion,MS GenAI adoption Q1 2026 (% WAP),106,WC + log GNI,True,True,False,0.6703930194613061
+microsoft,Microsoft AI Diffusion,MS GenAI adoption Q1 2026 (% WAP),106,WC + Exposure,True,False,True,0.6526354948137802
+microsoft,Microsoft AI Diffusion,MS GenAI adoption Q1 2026 (% WAP),106,log GNI + Exposure,False,True,True,0.6409666273168902
+microsoft,Microsoft AI Diffusion,MS GenAI adoption Q1 2026 (% WAP),106,WC + log GNI + Exposure,True,True,True,0.6705456086785206

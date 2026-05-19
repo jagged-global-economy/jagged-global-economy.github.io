@@ -10544,7 +10544,7 @@
           "countryCode": "LUX",
           "countryName": "Luxembourg",
           "exposure": 0.3715,
-          "value": 111.61049653792
+          "value": 111.61049653791999
         },
         {
           "countryCode": "SGP",
@@ -10610,7 +10610,7 @@
           "countryCode": "USA",
           "countryName": "United States of America",
           "exposure": 0.3225,
-          "value": 100.98150717229
+          "value": 100.98150717229001
         },
         {
           "countryCode": "CYP",
@@ -10718,7 +10718,7 @@
           "countryCode": "LVA",
           "countryName": "Latvia",
           "exposure": 0.3042,
-          "value": 60.91101694915
+          "value": 60.911016949149996
         },
         {
           "countryCode": "SVN",
@@ -10790,7 +10790,7 @@
           "countryCode": "URY",
           "countryName": "Uruguay",
           "exposure": 0.2807,
-          "value": 26.66731423719
+          "value": 26.667314237190002
         },
         {
           "countryCode": "ARE",
@@ -10922,7 +10922,7 @@
           "countryCode": "THA",
           "countryName": "Thailand",
           "exposure": 0.25,
-          "value": 12.41236029106
+          "value": 12.412360291059999
         },
         {
           "countryCode": "GUY",
@@ -11030,7 +11030,7 @@
           "countryCode": "GMB",
           "countryName": "Gambia",
           "exposure": 0.2337,
-          "value": 1.2786178652323985
+          "value": 1.2786178652323983
         },
         {
           "countryCode": "NPL",
@@ -11078,7 +11078,7 @@
           "countryCode": "VNM",
           "countryName": "Viet Nam",
           "exposure": 0.2253,
-          "value": 9.219600174040789
+          "value": 9.219600174040787
         },
         {
           "countryCode": "PAK",
@@ -11090,13 +11090,13 @@
           "countryCode": "MWI",
           "countryName": "Malawi",
           "exposure": 0.2225,
-          "value": 1.009743125420438
+          "value": 1.0097431254204379
         },
         {
           "countryCode": "ECU",
           "countryName": "Ecuador",
           "exposure": 0.2222,
-          "value": 9.73983161989154
+          "value": 9.739831619891541
         },
         {
           "countryCode": "TJK",
@@ -11162,7 +11162,7 @@
           "countryCode": "KEN",
           "countryName": "Kenya",
           "exposure": 0.1988,
-          "value": 9.825919326906275
+          "value": 9.825919326906277
         },
         {
           "countryCode": "BFA",
@@ -11192,7 +11192,7 @@
           "countryCode": "UGA",
           "countryName": "Uganda",
           "exposure": 0.182,
-          "value": 1.768450902221281
+          "value": 1.7684509022212813
         },
         {
           "countryCode": "LSO",
@@ -11794,651 +11794,651 @@
     },
     "microsoft": {
       "source": "Microsoft AI Diffusion",
-      "metricLabel": "MS GenAI adoption (% WAP)",
+      "metricLabel": "MS GenAI adoption Q1 2026 (% WAP)",
       "nCountries": 107.0,
-      "spearmanRho": 0.7954118508290835,
+      "spearmanRho": 0.8035469551902152,
       "points": [
         {
           "countryCode": "AFG",
           "countryName": "Afghanistan",
           "exposure": 0.1893,
-          "value": 5.6
+          "value": 6.1
         },
         {
           "countryCode": "ALB",
           "countryName": "Albania",
           "exposure": 0.2302,
-          "value": 16.5
+          "value": 18.5
         },
         {
           "countryCode": "AGO",
           "countryName": "Angola",
           "exposure": 0.2062,
-          "value": 9.7
+          "value": 10.9
         },
         {
           "countryCode": "ARG",
           "countryName": "Argentina",
           "exposure": 0.2937,
-          "value": 19.6
+          "value": 21.9
         },
         {
           "countryCode": "AUS",
           "countryName": "Australia",
           "exposure": 0.3217,
-          "value": 36.9
+          "value": 39.5
         },
         {
           "countryCode": "AUT",
           "countryName": "Austria",
           "exposure": 0.3211,
-          "value": 31.4
+          "value": 34.1
         },
         {
           "countryCode": "BGD",
           "countryName": "Bangladesh",
           "exposure": 0.218,
-          "value": 7.1
+          "value": 7.8
         },
         {
           "countryCode": "BLR",
           "countryName": "Belarus",
           "exposure": 0.2821,
-          "value": 8.4
+          "value": 9.6
         },
         {
           "countryCode": "BEL",
           "countryName": "Belgium",
           "exposure": 0.3231,
-          "value": 36.0
+          "value": 39.0
         },
         {
           "countryCode": "BEN",
           "countryName": "Benin",
           "exposure": 0.2272,
-          "value": 9.3
+          "value": 10.1
         },
         {
           "countryCode": "BOL",
           "countryName": "Bolivia (Plurinational State of)",
           "exposure": 0.2413,
-          "value": 11.6
+          "value": 12.7
         },
         {
           "countryCode": "BIH",
           "countryName": "Bosnia and Herzegovina",
           "exposure": 0.2628,
-          "value": 19.5
+          "value": 22.1
         },
         {
           "countryCode": "BWA",
           "countryName": "Botswana",
           "exposure": 0.2282,
-          "value": 13.7
+          "value": 14.8
         },
         {
           "countryCode": "BRA",
           "countryName": "Brazil",
           "exposure": 0.2783,
-          "value": 17.1
+          "value": 19.1
         },
         {
           "countryCode": "BGR",
           "countryName": "Bulgaria",
           "exposure": 0.2924,
-          "value": 27.3
+          "value": 29.7
         },
         {
           "countryCode": "BFA",
           "countryName": "Burkina Faso",
           "exposure": 0.1977,
-          "value": 9.3
+          "value": 10.1
         },
         {
           "countryCode": "BDI",
           "countryName": "Burundi",
           "exposure": 0.144,
-          "value": 6.8
+          "value": 7.6
         },
         {
           "countryCode": "KHM",
           "countryName": "Cambodia",
           "exposure": 0.2208,
-          "value": 5.1
+          "value": 5.7
         },
         {
           "countryCode": "CHL",
           "countryName": "Chile",
           "exposure": 0.2786,
-          "value": 20.8
+          "value": 22.7
         },
         {
           "countryCode": "COL",
           "countryName": "Colombia",
           "exposure": 0.2628,
-          "value": 22.0
+          "value": 24.5
         },
         {
           "countryCode": "COD",
           "countryName": "Congo, Democratic Republic of the",
           "exposure": 0.1969,
-          "value": 7.8
+          "value": 8.7
         },
         {
           "countryCode": "CRI",
           "countryName": "Costa Rica",
           "exposure": 0.274,
-          "value": 26.5
+          "value": 28.5
         },
         {
           "countryCode": "CIV",
           "countryName": "Côte d'Ivoire",
           "exposure": 0.2397,
-          "value": 11.7
+          "value": 13.1
         },
         {
           "countryCode": "HRV",
           "countryName": "Croatia",
           "exposure": 0.3107,
-          "value": 23.7
+          "value": 26.1
         },
         {
           "countryCode": "CUB",
           "countryName": "Cuba",
           "exposure": 0.2645,
-          "value": 6.1
+          "value": 6.7
         },
         {
           "countryCode": "CZE",
           "countryName": "Czechia",
           "exposure": 0.3016,
-          "value": 27.8
+          "value": 30.1
         },
         {
           "countryCode": "DNK",
           "countryName": "Denmark",
           "exposure": 0.3239,
-          "value": 28.7
+          "value": 31.2
         },
         {
           "countryCode": "DOM",
           "countryName": "Dominican Republic",
           "exposure": 0.264,
-          "value": 22.7
+          "value": 24.8
         },
         {
           "countryCode": "ECU",
           "countryName": "Ecuador",
           "exposure": 0.2222,
-          "value": 17.7
+          "value": 19.5
         },
         {
           "countryCode": "EGY",
           "countryName": "Egypt",
           "exposure": 0.2543,
-          "value": 13.4
+          "value": 14.8
         },
         {
           "countryCode": "SLV",
           "countryName": "El Salvador",
           "exposure": 0.2511,
-          "value": 16.2
+          "value": 18.3
         },
         {
           "countryCode": "ETH",
           "countryName": "Ethiopia",
           "exposure": 0.1767,
-          "value": 6.8
+          "value": 7.6
         },
         {
           "countryCode": "FIN",
           "countryName": "Finland",
           "exposure": 0.3089,
-          "value": 27.3
+          "value": 29.5
         },
         {
           "countryCode": "FRA",
           "countryName": "France",
           "exposure": 0.3193,
-          "value": 44.0
+          "value": 47.8
         },
         {
           "countryCode": "GMB",
           "countryName": "Gambia",
           "exposure": 0.2337,
-          "value": 10.9
+          "value": 11.4
         },
         {
           "countryCode": "GEO",
           "countryName": "Georgia",
           "exposure": 0.237,
-          "value": 18.2
+          "value": 20.5
         },
         {
           "countryCode": "DEU",
           "countryName": "Germany",
           "exposure": 0.333,
-          "value": 28.6
+          "value": 31.1
         },
         {
           "countryCode": "GHA",
           "countryName": "Ghana",
           "exposure": 0.22,
-          "value": 9.3
+          "value": 10.1
         },
         {
           "countryCode": "GRC",
           "countryName": "Greece",
           "exposure": 0.3154,
-          "value": 19.1
+          "value": 20.8
         },
         {
           "countryCode": "GTM",
           "countryName": "Guatemala",
           "exposure": 0.2337,
-          "value": 14.8
+          "value": 16.4
         },
         {
           "countryCode": "GIN",
           "countryName": "Guinea",
           "exposure": 0.2271,
-          "value": 9.3
+          "value": 10.1
         },
         {
           "countryCode": "GNB",
           "countryName": "Guinea-Bissau",
           "exposure": 0.1788,
-          "value": 9.3
+          "value": 10.1
         },
         {
           "countryCode": "GUY",
           "countryName": "Guyana",
           "exposure": 0.247,
-          "value": 9.0
+          "value": 10.3
         },
         {
           "countryCode": "HND",
           "countryName": "Honduras",
           "exposure": 0.2314,
-          "value": 13.1
+          "value": 14.0
         },
         {
           "countryCode": "HUN",
           "countryName": "Hungary",
           "exposure": 0.3086,
-          "value": 29.8
+          "value": 32.2
         },
         {
           "countryCode": "IND",
           "countryName": "India",
           "exposure": 0.2166,
-          "value": 15.7
+          "value": 17.6
         },
         {
           "countryCode": "IDN",
           "countryName": "Indonesia",
           "exposure": 0.2419,
-          "value": 12.7
+          "value": 14.1
         },
         {
           "countryCode": "IRN",
           "countryName": "Iran (Islamic Republic of)",
           "exposure": 0.2538,
-          "value": 10.7
+          "value": 12.6
         },
         {
           "countryCode": "IRQ",
           "countryName": "Iraq",
           "exposure": 0.2428,
-          "value": 11.2
+          "value": 12.5
         },
         {
           "countryCode": "IRL",
           "countryName": "Ireland",
           "exposure": 0.3307,
-          "value": 44.6
+          "value": 48.4
         },
         {
           "countryCode": "ISR",
           "countryName": "Israel",
           "exposure": 0.3333,
-          "value": 36.1
+          "value": 38.1
         },
         {
           "countryCode": "ITA",
           "countryName": "Italy",
           "exposure": 0.313,
-          "value": 27.8
+          "value": 30.2
         },
         {
           "countryCode": "JAM",
           "countryName": "Jamaica",
           "exposure": 0.2662,
-          "value": 22.1
+          "value": 24.0
         },
         {
           "countryCode": "JPN",
           "countryName": "Japan",
           "exposure": 0.3161,
-          "value": 19.1
+          "value": 22.5
         },
         {
           "countryCode": "JOR",
           "countryName": "Jordan",
           "exposure": 0.2547,
-          "value": 27.0
+          "value": 29.7
         },
         {
           "countryCode": "KEN",
           "countryName": "Kenya",
           "exposure": 0.1988,
-          "value": 8.1
+          "value": 8.7
         },
         {
           "countryCode": "KGZ",
           "countryName": "Kyrgyzstan",
           "exposure": 0.2401,
-          "value": 8.2
+          "value": 9.5
         },
         {
           "countryCode": "LAO",
           "countryName": "Lao People's Democratic Republic",
           "exposure": 0.2054,
-          "value": 6.7
+          "value": 7.8
         },
         {
           "countryCode": "LBN",
           "countryName": "Lebanon",
           "exposure": 0.2639,
-          "value": 25.7
+          "value": 27.3
         },
         {
           "countryCode": "LSO",
           "countryName": "Lesotho",
           "exposure": 0.1748,
-          "value": 9.1
+          "value": 9.8
         },
         {
           "countryCode": "LTU",
           "countryName": "Lithuania",
           "exposure": 0.3088,
-          "value": 22.4
+          "value": 24.3
         },
         {
           "countryCode": "MDG",
           "countryName": "Madagascar",
           "exposure": 0.1662,
-          "value": 9.7
+          "value": 10.9
         },
         {
           "countryCode": "MWI",
           "countryName": "Malawi",
           "exposure": 0.2225,
-          "value": 9.7
+          "value": 10.9
         },
         {
           "countryCode": "MLI",
           "countryName": "Mali",
           "exposure": 0.2001,
-          "value": 9.3
+          "value": 10.1
         },
         {
           "countryCode": "MEX",
           "countryName": "Mexico",
           "exposure": 0.2638,
-          "value": 17.8
+          "value": 20.1
         },
         {
           "countryCode": "MNG",
           "countryName": "Mongolia",
           "exposure": 0.263,
-          "value": 14.3
+          "value": 16.7
         },
         {
           "countryCode": "MOZ",
           "countryName": "Mozambique",
           "exposure": 0.1618,
-          "value": 9.7
+          "value": 10.9
         },
         {
           "countryCode": "MMR",
           "countryName": "Myanmar",
           "exposure": 0.2293,
-          "value": 9.1
+          "value": 10.0
         },
         {
           "countryCode": "NPL",
           "countryName": "Nepal",
           "exposure": 0.2326,
-          "value": 13.0
+          "value": 14.2
         },
         {
           "countryCode": "NLD",
           "countryName": "Netherlands",
           "exposure": 0.3391,
-          "value": 38.9
+          "value": 42.1
         },
         {
           "countryCode": "NER",
           "countryName": "Niger",
           "exposure": 0.2412,
-          "value": 9.3
+          "value": 10.1
         },
         {
           "countryCode": "NOR",
           "countryName": "Norway",
           "exposure": 0.3196,
-          "value": 46.4
+          "value": 48.6
         },
         {
           "countryCode": "PAK",
           "countryName": "Pakistan",
           "exposure": 0.225,
-          "value": 10.3
+          "value": 11.4
         },
         {
           "countryCode": "PAN",
           "countryName": "Panama",
           "exposure": 0.2318,
-          "value": 21.5
+          "value": 23.3
         },
         {
           "countryCode": "PNG",
           "countryName": "Papua New Guinea",
           "exposure": 0.2364,
-          "value": 7.3
+          "value": 7.7
         },
         {
           "countryCode": "PER",
           "countryName": "Peru",
           "exposure": 0.2432,
-          "value": 14.7
+          "value": 16.4
         },
         {
           "countryCode": "PHL",
           "countryName": "Philippines",
           "exposure": 0.2523,
-          "value": 18.3
+          "value": 20.1
         },
         {
           "countryCode": "POL",
           "countryName": "Poland",
           "exposure": 0.3165,
-          "value": 28.5
+          "value": 31.0
         },
         {
           "countryCode": "PRT",
           "countryName": "Portugal",
           "exposure": 0.3139,
-          "value": 24.2
+          "value": 26.4
         },
         {
           "countryCode": "ROU",
           "countryName": "Romania",
           "exposure": 0.2717,
-          "value": 16.2
+          "value": 17.5
         },
         {
           "countryCode": "RUS",
           "countryName": "Russian Federation",
           "exposure": 0.2982,
-          "value": 8.0
+          "value": 9.5
         },
         {
           "countryCode": "RWA",
           "countryName": "Rwanda",
           "exposure": 0.1862,
-          "value": 6.3
+          "value": 7.2
         },
         {
           "countryCode": "SRB",
           "countryName": "Serbia",
           "exposure": 0.2847,
-          "value": 21.5
+          "value": 24.1
         },
         {
           "countryCode": "SLE",
           "countryName": "Sierra Leone",
           "exposure": 0.2047,
-          "value": 9.3
+          "value": 10.1
         },
         {
           "countryCode": "SGP",
           "countryName": "Singapore",
           "exposure": 0.3676,
-          "value": 60.9
+          "value": 63.4
         },
         {
           "countryCode": "SVN",
           "countryName": "Slovenia",
           "exposure": 0.3041,
-          "value": 26.5
+          "value": 29.0
         },
         {
           "countryCode": "SOM",
           "countryName": "Somalia",
           "exposure": 0.2586,
-          "value": 6.8
+          "value": 7.6
         },
         {
           "countryCode": "ESP",
           "countryName": "Spain",
           "exposure": 0.3011,
-          "value": 41.8
+          "value": 44.2
         },
         {
           "countryCode": "LKA",
           "countryName": "Sri Lanka",
           "exposure": 0.2373,
-          "value": 6.6
+          "value": 7.3
         },
         {
           "countryCode": "SDN",
           "countryName": "Sudan",
           "exposure": 0.2128,
-          "value": 6.8
+          "value": 7.6
         },
         {
           "countryCode": "SUR",
           "countryName": "Suriname",
           "exposure": 0.2703,
-          "value": 9.0
+          "value": 10.3
         },
         {
           "countryCode": "SWE",
           "countryName": "Sweden",
           "exposure": 0.334,
-          "value": 33.3
+          "value": 36.1
         },
         {
           "countryCode": "CHE",
           "countryName": "Switzerland",
           "exposure": 0.3349,
-          "value": 34.8
+          "value": 37.8
         },
         {
           "countryCode": "TJK",
           "countryName": "Tajikistan",
           "exposure": 0.2216,
-          "value": 5.6
+          "value": 6.1
         },
         {
           "countryCode": "TZA",
           "countryName": "Tanzania, United Republic of",
           "exposure": 0.1733,
-          "value": 6.8
+          "value": 7.6
         },
         {
           "countryCode": "THA",
           "countryName": "Thailand",
           "exposure": 0.25,
-          "value": 10.7
+          "value": 12.4
         },
         {
           "countryCode": "TGO",
           "countryName": "Togo",
           "exposure": 0.2353,
-          "value": 9.3
+          "value": 10.1
         },
         {
           "countryCode": "TUN",
           "countryName": "Tunisia",
           "exposure": 0.2364,
-          "value": 12.7
+          "value": 13.5
         },
         {
           "countryCode": "TUR",
           "countryName": "Türkiye",
           "exposure": 0.2652,
-          "value": 14.6
+          "value": 17.4
         },
         {
           "countryCode": "UGA",
           "countryName": "Uganda",
           "exposure": 0.182,
-          "value": 6.8
+          "value": 7.6
         },
         {
           "countryCode": "ARE",
           "countryName": "United Arab Emirates",
           "exposure": 0.2806,
-          "value": 64.0
+          "value": 70.1
         },
         {
           "countryCode": "GBR",
           "countryName": "United Kingdom of Great Britain and Northern Ireland",
           "exposure": 0.3294,
-          "value": 38.9
+          "value": 42.2
         },
         {
           "countryCode": "USA",
           "countryName": "United States of America",
           "exposure": 0.3225,
-          "value": 28.3
+          "value": 31.3
         },
         {
           "countryCode": "URY",
           "countryName": "Uruguay",
           "exposure": 0.2807,
-          "value": 22.5
+          "value": 24.6
         },
         {
           "countryCode": "VNM",
           "countryName": "Viet Nam",
           "exposure": 0.2253,
-          "value": 23.5
+          "value": 26.5
         },
         {
           "countryCode": "ZMB",
           "countryName": "Zambia",
           "exposure": 0.1872,
-          "value": 12.3
+          "value": 13.1
         },
         {
           "countryCode": "ZWE",
           "countryName": "Zimbabwe",
           "exposure": 0.1918,
-          "value": 7.6
+          "value": 8.5
         }
       ],
       "isLogScale": false,
@@ -12446,15 +12446,15 @@
         "points": [
           {
             "x": 0.144,
-            "y": -2.9034716558239246
+            "y": -2.7059946098255487
           },
           {
             "x": 0.3676,
-            "y": 39.504729692931306
+            "y": 42.7642483044877
           }
         ],
-        "slope": 189.66100782090894,
-        "intercept": -30.214656782034808
+        "slope": 203.35529031445995,
+        "intercept": -31.98915641510778
       }
     }
   },

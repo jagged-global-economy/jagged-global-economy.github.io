@@ -53,7 +53,7 @@
     "indirect/remittance_corridor_evidence.csv": {
       "columns": 16,
       "rows": 6,
-      "sha256": "fb7a1872b48d3b8ac73318194644c24cc8f0acfa3d406961c617d06cc304c2ab"
+      "sha256": "f48775f02e789446af25d912c41288b85e785f39741c8447f5da957ca352939c"
     },
     "indirect/remittance_data.csv": {
       "columns": 4,
@@ -143,7 +143,7 @@
     "robustness/alternative_exposure_summary.csv": {
       "columns": 10,
       "rows": 2,
-      "sha256": "bc6bbd2a39248210d776ef29abdf97ed9a676b4a1fd3e6297c3182b74f145049"
+      "sha256": "f68f9945d065b3101cd38155342f2019add203a1e2b1536865e1d63414ed002d"
     },
     "robustness/wc_boundary_sensitivity.csv": {
       "columns": 5,
@@ -158,12 +158,12 @@
     "validation/adoption_predictor_grid.csv": {
       "columns": 9,
       "rows": 24,
-      "sha256": "133d11e95868fc67fea092504d284e0cba3e85f981a5b3580bfbd793236b0e71"
+      "sha256": "4733d80af56cd330db5db0813472f4ad90efa03d96f1c66a17c98bc48a160a7c"
     },
     "validation/appendix_predicting_adoption_regressions.csv": {
       "columns": 25,
       "rows": 24,
-      "sha256": "049f086503501a20272ab9ca14c3779c793a38b4631895f558a0b5f4941c4c3b"
+      "sha256": "71fdc22e4e7315054e3893824e7477ab675338ecd820d751d7d8ac586f8819d8"
     },
     "validation/appendix_predicting_exposure_regressions.csv": {
       "columns": 25,
@@ -176,19 +176,19 @@
       "sha256": "9bcab94bd651402d86957870299a303eca0e387da1876773102574df0ccf7e3a"
     },
     "validation/microsoft_ai_diffusion_country_adoption.csv": {
-      "columns": 5,
+      "columns": 7,
       "rows": 147,
-      "sha256": "ea296af20f4a9391e4356a5918b9c5099bf19e28f40789b8eea6489aad5f794d"
+      "sha256": "184b89c241aceb08b35b7b335fdda9e5562ecfc242dd5b189e2348d9377f5b2d"
     },
     "validation/observed_outcomes_vs_exposure.csv": {
       "columns": 8,
-      "rows": 202,
-      "sha256": "0b8119579da6518d1c025374b962629f4f54e9d0937c967948aec46c09b4fe70"
+      "rows": 309,
+      "sha256": "b5e04c974365eb880dcd5d2d242a70e601101bedfca0f11b719f0bb39ea90d68"
     },
     "validation/observed_outcomes_vs_exposure_stats.csv": {
       "columns": 5,
       "rows": 3,
-      "sha256": "df961e0f7bd170d7e88a81f7ce8d53c61db02cb14a24e191285645380dd4cd17"
+      "sha256": "2d26d8c5c84332f94b2087e1774ef46fdd10097d3bd23e28bc008e6c3d62805a"
     },
     "validation/occupation_validation.csv": {
       "columns": 8,

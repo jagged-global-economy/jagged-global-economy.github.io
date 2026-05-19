@@ -629,7 +629,7 @@
         "plot-adoption-microsoft",
         data.adoption.microsoft,
         "Microsoft AI Diffusion",
-        "MS GenAI adoption (% WAP)"
+        "MS GenAI adoption Q1 2026 (% WAP)"
       ),
       renderRemittance(data),
     ]);

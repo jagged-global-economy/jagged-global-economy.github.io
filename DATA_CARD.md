@@ -11,11 +11,12 @@ over national occupational employment shares.
 Upstream sources include Gmyrek et al. occupational exposure scores, ILOSTAT
 occupational employment and wage/labor-share inputs, World Bank national
 indicators and classifications, KNOMAD bilateral remittance matrices, and
-provider-published aggregate AI usage/adoption statistics. The release includes
-a project-authored country-level extraction from the Microsoft AI Diffusion
-public report table for website replication and validation plots. Hosseini
-Maasoum and Lichtinger transformed score vectors are not redistributed; the
-release includes aggregate robustness statistics and source links only.
+provider-published aggregate AI usage/adoption statistics. The Microsoft
+AI Diffusion country/economy table is redistributed from Microsoft's
+official MIT-licensed GitHub data release after ISO alpha-3 matching.
+Hosseini Maasoum and Lichtinger transformed score vectors are not
+redistributed; the release includes aggregate robustness statistics and
+source links only.
 
 ## Responsible AI Notes
 
@@ -31,10 +32,9 @@ release includes aggregate robustness statistics and source links only.
 ## Redistribution
 
 This release redistributes derived aggregate tables and selected
-provider-reported values where included. Raw upstream source files and API
-mirrors are not included. For Microsoft AI Diffusion, the release includes a
-project-authored extraction from the public report table; users should consult
-the source-data manifest and Microsoft source terms before downstream reuse. For
-Hosseini Maasoum and Lichtinger, transformed score vectors are omitted. Users
-should consult the source-data manifest for original provider terms and
-citations.
+provider-reported aggregate values where permitted. Raw upstream source files
+and API mirrors are not included. For Microsoft AI Diffusion, the
+official country/economy data are included under the upstream MIT license;
+for Hosseini Maasoum and Lichtinger, transformed score vectors are
+omitted. Users should consult the source-data manifest for original
+provider terms and citations.

@@ -61,7 +61,7 @@
     "@type": "sc:Organization",
     "name": "Anonymous NeurIPS 2026 E&D authors"
   },
-  "datePublished": "2026-05-05",
+  "datePublished": "2026-05-19",
   "version": "0.2.0",
   "identifier": "https://huggingface.co/datasets/anonymous-ai-exposure/jagged-global-economy",
   "citeAs": "Anonymous. The Jagged Global Economy: National AI Exposure Derived Tables. NeurIPS 2026 Evaluations & Datasets submission artifact.",
@@ -241,20 +241,20 @@
       "@id": "data_validation_observed_outcomes_vs_exposure",
       "name": "observed_outcomes_vs_exposure.csv",
       "contentUrl": "https://huggingface.co/datasets/anonymous-ai-exposure/jagged-global-economy/resolve/main/data/validation/observed_outcomes_vs_exposure.csv",
-      "contentSize": "19582 B",
+      "contentSize": "30217 B",
       "encodingFormat": "text/csv",
       "description": "Paper Section 6 country-level analysis table for observed AI usage/adoption outcomes.",
-      "sha256": "0b8119579da6518d1c025374b962629f4f54e9d0937c967948aec46c09b4fe70"
+      "sha256": "b5e04c974365eb880dcd5d2d242a70e601101bedfca0f11b719f0bb39ea90d68"
     },
     {
       "@type": "cr:FileObject",
       "@id": "data_validation_observed_outcomes_vs_exposure_stats",
       "name": "observed_outcomes_vs_exposure_stats.csv",
       "contentUrl": "https://huggingface.co/datasets/anonymous-ai-exposure/jagged-global-economy/resolve/main/data/validation/observed_outcomes_vs_exposure_stats.csv",
-      "contentSize": "286 B",
+      "contentSize": "294 B",
       "encodingFormat": "text/csv",
       "description": "Model statistics for Section 6 observed AI usage/adoption outcome fits.",
-      "sha256": "df961e0f7bd170d7e88a81f7ce8d53c61db02cb14a24e191285645380dd4cd17"
+      "sha256": "2d26d8c5c84332f94b2087e1774ef46fdd10097d3bd23e28bc008e6c3d62805a"
     },
     {
       "@type": "cr:FileObject",
@@ -264,17 +264,27 @@
       "contentSize": "2685 B",
       "encodingFormat": "text/csv",
       "description": "R-squared grid for three adoption outcomes and eight predictor combinations.",
-      "sha256": "133d11e95868fc67fea092504d284e0cba3e85f981a5b3580bfbd793236b0e71"
+      "sha256": "4733d80af56cd330db5db0813472f4ad90efa03d96f1c66a17c98bc48a160a7c"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data_validation_microsoft_ai_diffusion_country_adoption",
+      "name": "microsoft_ai_diffusion_country_adoption.csv",
+      "contentUrl": "https://huggingface.co/datasets/anonymous-ai-exposure/jagged-global-economy/resolve/main/data/validation/microsoft_ai_diffusion_country_adoption.csv",
+      "contentSize": "6096 B",
+      "encodingFormat": "text/csv",
+      "description": "Official Microsoft AI Diffusion country/economy adoption rates for H1 2025, H2 2025, and Q1 2026, matched to ISO alpha-3 codes.",
+      "sha256": "184b89c241aceb08b35b7b335fdda9e5562ecfc242dd5b189e2348d9377f5b2d"
     },
     {
       "@type": "cr:FileObject",
       "@id": "data_validation_appendix_predicting_adoption_regressions",
       "name": "appendix_predicting_adoption_regressions.csv",
       "contentUrl": "https://huggingface.co/datasets/anonymous-ai-exposure/jagged-global-economy/resolve/main/data/validation/appendix_predicting_adoption_regressions.csv",
-      "contentSize": "6474 B",
+      "contentSize": "6447 B",
       "encodingFormat": "text/csv",
       "description": "Coefficient-level OLS results for adoption-predictivity appendix models.",
-      "sha256": "049f086503501a20272ab9ca14c3779c793a38b4631895f558a0b5f4941c4c3b"
+      "sha256": "71fdc22e4e7315054e3893824e7477ab675338ecd820d751d7d8ac586f8819d8"
     },
     {
       "@type": "cr:FileObject",
@@ -421,10 +431,10 @@
       "@id": "data_indirect_remittance_corridor_evidence",
       "name": "remittance_corridor_evidence.csv",
       "contentUrl": "https://huggingface.co/datasets/anonymous-ai-exposure/jagged-global-economy/resolve/main/data/indirect/remittance_corridor_evidence.csv",
-      "contentSize": "2116 B",
+      "contentSize": "2174 B",
       "encodingFormat": "text/csv",
       "description": "Selected derived corridor evidence table for paper narrative claims, using KNOMAD 2021 bilateral remittance flows and World Bank 2024 remittance indicators where available.",
-      "sha256": "fb7a1872b48d3b8ac73318194644c24cc8f0acfa3d406961c617d06cc304c2ab"
+      "sha256": "f48775f02e789446af25d912c41288b85e785f39741c8447f5da957ca352939c"
     },
     {
       "@type": "cr:FileObject",
@@ -444,7 +454,7 @@
       "contentSize": "650 B",
       "encodingFormat": "text/csv",
       "description": "Aggregate robustness correlations for alternative occupational exposure measures. H&L transformed score vectors are not redistributed because no standalone open-data redistribution license was identified.",
-      "sha256": "bc6bbd2a39248210d776ef29abdf97ed9a676b4a1fd3e6297c3182b74f145049"
+      "sha256": "f68f9945d065b3101cd38155342f2019add203a1e2b1536865e1d63414ed002d"
     },
     {
       "@type": "cr:FileObject",
@@ -3345,6 +3355,119 @@
             },
             "extract": {
               "column": "r2"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "data_validation_microsoft_ai_diffusion_country_adoption_records",
+      "name": "Microsoft AI Diffusion country adoption",
+      "description": "Official Microsoft AI Diffusion country/economy adoption rates for H1 2025, H2 2025, and Q1 2026, matched to ISO alpha-3 codes.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "data_validation_microsoft_ai_diffusion_country_adoption/country_name",
+          "name": "country_name",
+          "dataType": "sc:Text",
+          "description": "Country or economy name used in the analysis. Unit/format: text. Missingness: Missing only where a row is not country-specific.",
+          "source": {
+            "fileObject": {
+              "@id": "data_validation_microsoft_ai_diffusion_country_adoption"
+            },
+            "extract": {
+              "column": "country_name"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "data_validation_microsoft_ai_diffusion_country_adoption/country_code",
+          "name": "country_code",
+          "dataType": "sc:Text",
+          "description": "ISO-3 country or economy code. Unit/format: ISO-3 text code. Missingness: Missing only where a row is not country-specific.",
+          "source": {
+            "fileObject": {
+              "@id": "data_validation_microsoft_ai_diffusion_country_adoption"
+            },
+            "extract": {
+              "column": "country_code"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "data_validation_microsoft_ai_diffusion_country_adoption/adoption_rate",
+          "name": "adoption_rate",
+          "dataType": "sc:Float",
+          "description": "Latest Microsoft AI Diffusion adoption rate used as the headline validation outcome. Unit/format: percent of working-age population. Missingness: No missing values in the Microsoft adoption table.",
+          "source": {
+            "fileObject": {
+              "@id": "data_validation_microsoft_ai_diffusion_country_adoption"
+            },
+            "extract": {
+              "column": "adoption_rate"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "data_validation_microsoft_ai_diffusion_country_adoption/adoption_rate_h1_2025",
+          "name": "adoption_rate_h1_2025",
+          "dataType": "sc:Float",
+          "description": "Microsoft AI Diffusion H1 2025 adoption rate retained for audit. Unit/format: percent of working-age population. Missingness: No missing values in the Microsoft adoption table.",
+          "source": {
+            "fileObject": {
+              "@id": "data_validation_microsoft_ai_diffusion_country_adoption"
+            },
+            "extract": {
+              "column": "adoption_rate_h1_2025"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "data_validation_microsoft_ai_diffusion_country_adoption/adoption_rate_h2_2025",
+          "name": "adoption_rate_h2_2025",
+          "dataType": "sc:Float",
+          "description": "Microsoft AI Diffusion H2 2025 adoption rate retained for audit and historical comparison. Unit/format: percent of working-age population. Missingness: No missing values in the Microsoft adoption table.",
+          "source": {
+            "fileObject": {
+              "@id": "data_validation_microsoft_ai_diffusion_country_adoption"
+            },
+            "extract": {
+              "column": "adoption_rate_h2_2025"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "data_validation_microsoft_ai_diffusion_country_adoption/adoption_rate_q1_2026",
+          "name": "adoption_rate_q1_2026",
+          "dataType": "sc:Float",
+          "description": "Microsoft AI Diffusion Q1 2026 adoption rate used as the headline validation outcome. Unit/format: percent of working-age population. Missingness: No missing values in the Microsoft adoption table.",
+          "source": {
+            "fileObject": {
+              "@id": "data_validation_microsoft_ai_diffusion_country_adoption"
+            },
+            "extract": {
+              "column": "adoption_rate_q1_2026"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "data_validation_microsoft_ai_diffusion_country_adoption/source_economy_name",
+          "name": "source_economy_name",
+          "dataType": "sc:Text",
+          "description": "Country or economy name as reported in the official Microsoft AI Diffusion GitHub CSV. Unit/format: text. Missingness: No missing values in the Microsoft adoption table.",
+          "source": {
+            "fileObject": {
+              "@id": "data_validation_microsoft_ai_diffusion_country_adoption"
+            },
+            "extract": {
+              "column": "source_economy_name"
             }
           }
         }
@@ -6574,17 +6697,17 @@
     },
     {
       "@type": "sc:Dataset",
-      "@id": "https://www.microsoft.com/en-us/corporate-responsibility/topics/ai-economy-institute",
+      "@id": "https://github.com/microsoft/ai-diffusion-report",
       "name": "microsoft_ai_economy_institute",
       "alternateName": "Microsoft AI Economy Institute",
-      "url": "https://www.microsoft.com/en-us/corporate-responsibility/topics/ai-economy-institute",
-      "description": "Published cross-country generative AI adoption measures. Version/release: H2 2025 generative AI adoption measure used in paper analysis snapshot. Processing detail: Cross-country generative AI adoption as share of working-age population, extracted from the public report table.",
+      "url": "https://github.com/microsoft/ai-diffusion-report",
+      "description": "Published cross-country generative AI adoption measures. Version/release: AI_Diffusion_Q12026_Update.csv, Q1 2026 update.. Processing detail: Cross-country generative AI adoption as share of working-age population, with H1 2025, H2 2025, and Q1 2026 rates.",
       "version": "1.0.0",
-      "license": "Published report/table terms apply; users should consult Microsoft source terms before downstream reuse of the project-authored extraction.",
-      "dateAccessed": "2026-05-02",
-      "datePublished": "2026-05-02",
-      "citation": "https://www.microsoft.com/en-us/corporate-responsibility/topics/ai-economy-institute",
-      "usageInfo": "Project-authored country-level extraction is redistributed for website replication and validation plots; raw report PDF is not redistributed."
+      "license": "Microsoft AI Diffusion GitHub data repository is MIT licensed.",
+      "dateAccessed": "2026-05-19",
+      "datePublished": "2026-05-19",
+      "citation": "https://github.com/microsoft/ai-diffusion-report",
+      "usageInfo": "Official country/economy adoption table redistributed with ISO alpha-3 matches under the upstream MIT license."
     },
     {
       "@type": "sc:Dataset",

@@ -38,6 +38,6 @@ Outputs are written to `code/outputs/`.
 
 This is a derived-data reproduction package, not a raw-source rebuild. Raw
 third-party files and API mirrors are documented in `../source_data_manifest.csv`
-but are not redistributed here. The Microsoft AI Diffusion country-level table
-is included as a project-authored extraction from the public report table so the
-website and validation plots can be rebuilt from repository data.
+but are not redistributed here. The Microsoft AI Diffusion country/economy table
+is included from Microsoft's official MIT-licensed GitHub data release after ISO
+alpha-3 matching.
