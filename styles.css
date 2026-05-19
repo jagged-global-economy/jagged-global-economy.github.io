@@ -49,7 +49,7 @@ a {
 }
 
 .paper-header {
-  text-align: left;
+  text-align: center;
   padding: 6px 0 36px;
 }
 
@@ -62,7 +62,7 @@ p {
 
 h1 {
   max-width: var(--text-width);
-  margin: 0 0 8px;
+  margin: 0 auto 8px;
   font-family: var(--serif);
   font-size: clamp(32px, 3.6vw, 46px);
   line-height: 1.04;
@@ -72,11 +72,11 @@ h1 {
 }
 
 .subtitle {
-  margin: 0 0 12px;
+  margin: 0 auto 12px;
   color: var(--muted);
   font-size: clamp(1.08rem, 1.7vw, 1.28rem);
   line-height: 1.25;
-  text-align: left;
+  text-align: center;
 }
 
 h2 {
@@ -89,7 +89,7 @@ h2 {
 
 .hero-question {
   max-width: var(--text-width);
-  margin: 0 0 18px;
+  margin: 0 auto 18px;
   color: var(--ink);
   font-family: var(--serif);
   font-size: clamp(1.24rem, 2.1vw, 1.7rem);
@@ -101,7 +101,7 @@ h2 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
   max-width: var(--text-width);
-  margin: 0 0 18px;
+  margin: 0 auto 18px;
   font-size: 0.84rem;
 }
 
@@ -126,7 +126,7 @@ h2 {
 
 .links {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
   margin-bottom: 20px;
@@ -155,8 +155,8 @@ h2 {
 
 .lead {
   max-width: var(--text-width);
-  margin: 0;
-  text-align: left;
+  margin: 0 auto;
+  text-align: center;
   color: #38404a;
   font-size: 1rem;
   overflow-wrap: break-word;
