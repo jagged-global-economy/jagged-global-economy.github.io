@@ -59,17 +59,9 @@
   const config = {
     responsive: true,
     displaylogo: false,
+    displayModeBar: false,
     scrollZoom: false,
     doubleClick: "reset",
-    modeBarButtonsToRemove: [
-      "toImage",
-      "pan2d",
-      "zoomIn2d",
-      "zoomOut2d",
-      "autoScale2d",
-      "select2d",
-      "lasso2d",
-    ],
   };
 
   function compactNumber(value, digits = 1) {
