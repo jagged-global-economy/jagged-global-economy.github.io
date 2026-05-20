@@ -192,6 +192,21 @@ section > p + p {
   text-align: left;
 }
 
+.section-copy {
+  max-width: var(--text-width);
+  margin: 0 auto;
+  color: var(--muted);
+  text-align: left;
+}
+
+.section-copy p {
+  margin: 0;
+}
+
+.section-copy p + p {
+  margin-top: 16px;
+}
+
 .findings {
   margin: 0;
   padding: 0;
