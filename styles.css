@@ -597,15 +597,11 @@ figcaption,
   min-height: 42px;
 }
 
-#citation {
-  position: relative;
-}
-
 .copy-button {
-  position: absolute;
-  right: 0;
-  top: 0;
+  display: flex;
+  width: fit-content;
   min-height: 34px;
+  margin: 0 0 8px auto;
   padding: 5px 12px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -776,11 +772,6 @@ footer {
   .findings li::before {
     width: 34px;
     font-size: 1.55rem;
-  }
-
-  .copy-button {
-    position: static;
-    margin-bottom: 10px;
   }
 
   .plot-map {
