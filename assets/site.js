@@ -480,7 +480,11 @@
         customdata: rows.map((row) => [row.countryCode, row.region, row.incomeGroup, row.employmentK]),
         marker: {
           color: rows.map((row) => row.exposure),
-          colorscale: "Blues",
+          colorscale: [
+            [0, "#dbe8ff"],
+            [0.45, "#6f8ff2"],
+            [1, "#0b2aa8"],
+          ],
           size: 8,
           opacity: 0.82,
           line: { color: "white", width: 0.5 },
