@@ -124,7 +124,7 @@
     return {
       title: {
         text: "Exposure score",
-        side: "right",
+        side: "top",
         font: { size: 11, color: "#2f3439" },
       },
       tickfont: { size: 11, color: "#2f3439" },
