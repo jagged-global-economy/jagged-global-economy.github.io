@@ -128,22 +128,23 @@ h2 {
 .links {
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   font-family: var(--sans);
 }
 
 .links a {
-  min-height: 32px;
+  min-height: 30px;
   display: inline-flex;
   align-items: center;
-  padding: 5px 13px;
-  border: 1px solid var(--line);
+  padding: 4px 12px;
+  border: 1px solid #cfd8e3;
   border-radius: 999px;
-  background: var(--panel);
-  color: var(--ink);
-  font-size: 0.88rem;
+  background: linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
+  box-shadow: 0 1px 1px rgba(31, 35, 40, 0.04);
+  color: #26323d;
+  font-size: 0.84rem;
   font-weight: 650;
   text-decoration: none;
 }
@@ -151,6 +152,8 @@ h2 {
 .links a:hover,
 .links a:focus-visible {
   border-color: var(--link);
+  background: #f4f8fb;
+  box-shadow: 0 1px 4px rgba(24, 90, 141, 0.1);
   color: var(--link);
 }
 
@@ -401,9 +404,12 @@ figcaption,
   width: 100%;
   margin-top: 22px;
   padding: 14px;
-  border: 1px solid var(--line-soft);
+  border: 1px solid rgba(180, 79, 42, 0.22);
   border-radius: 10px;
   background: var(--panel);
+  box-shadow:
+    0 1px 2px rgba(31, 35, 40, 0.04),
+    0 12px 28px rgba(24, 90, 141, 0.04);
 }
 
 .atlas-grid {
@@ -432,10 +438,10 @@ figcaption,
   max-width: 100%;
   margin: 0 0 8px;
   padding: 5px 9px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(24, 90, 141, 0.24);
   border-radius: 999px;
-  background: var(--panel);
-  color: #39424d;
+  background: #f6fafc;
+  color: #23465b;
   font-size: 0.75rem;
   font-weight: 700;
   line-height: 1.25;
@@ -503,11 +509,11 @@ figcaption,
 .country-inspector {
   align-self: start;
   padding: 17px 18px 15px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(180, 79, 42, 0.22);
   border-top: 4px solid var(--accent);
   border-radius: var(--radius);
   background: var(--panel);
-  box-shadow: 0 1px 2px rgba(31, 35, 40, 0.04);
+  box-shadow: 0 8px 22px rgba(31, 35, 40, 0.06);
   font-family: var(--sans);
   font-size: 0.88rem;
   line-height: 1.38;
@@ -575,6 +581,13 @@ figcaption,
   padding-top: 2px;
   font-size: 0.9rem;
   letter-spacing: 0;
+}
+
+.inspector-note {
+  margin: 5px 0 2px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.34;
 }
 
 .occupation-list {

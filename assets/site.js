@@ -448,7 +448,7 @@
       detail.textContent =
         `${formatPercent(occupation.employmentSharePct)} of workers · ` +
         `occupation exposure score ${occupation.exposureScore.toFixed(3)} · ` +
-        `${formatPercent(occupation.contributionPct)} of national exposure`;
+        `${formatPercent(occupation.contributionPct)} of national exposure score`;
       item.append(main, detail);
       occupations.append(item);
     });

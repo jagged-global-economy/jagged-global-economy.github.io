@@ -8,9 +8,9 @@
       name="description"
       content="Project page for The Jagged Global Economy: Frontier AI Unevenly Exposes National Economies."
     />
-    <link rel="stylesheet" href="styles.css?v=inspector-header-center-20260520" />
+    <link rel="stylesheet" href="styles.css?v=reader-polish-20260522" />
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" defer></script>
-    <script src="assets/site.js?v=map-html-legend-20260520" defer></script>
+    <script src="assets/site.js?v=reader-polish-20260522" defer></script>
   </head>
   <body>
     <main class="page">
@@ -46,12 +46,11 @@
         </nav>
 
         <p class="lead">
-          We estimate exposure by combining occupation-level frontier AI exposure
-          scores with international employment data for 141 national labor
-          markets. Exposure is a structural measure: it asks how much of a
-          country's current workforce is concentrated in occupations whose tasks
-          frontier AI can already accelerate or transform. It is not a forecast
-          of AI adoption, automation, wages, or job loss.
+          Exposure means how much of a country's current workforce is in jobs
+          whose tasks frontier AI can already help perform. We estimate it by
+          combining occupation-level AI exposure scores with employment data for
+          141 national labor markets. It describes today's workforce structure,
+          not a forecast of job losses, wages, or AI adoption.
         </p>
       </header>
 
@@ -60,9 +59,8 @@
       <section id="national-exposure" class="figure-section atlas-section">
         <h2>National AI Exposure</h2>
         <p>
-          The map shades 141 national labor markets by AI exposure. Darker
-          countries score higher; click a country to see the occupations behind
-          its score.
+          Darker countries have a larger share of workers in AI-exposed jobs.
+          Click a country to see which worker groups make up its score.
         </p>
         <figure class="interactive-figure atlas-figure">
           <div class="atlas-grid">
@@ -117,7 +115,11 @@
                   <strong id="inspector-employment">--</strong>
                 </div>
               </div>
-              <h4>Largest Occupation Groups</h4>
+              <h4>Largest Worker Groups by Employment Share</h4>
+              <p class="inspector-note">
+                Sorted by worker share. Each row shows employment share,
+                occupation exposure, and contribution to the national score.
+              </p>
               <ul id="inspector-occupations" class="occupation-list">
                 <li>Loading occupation shares.</li>
               </ul>
