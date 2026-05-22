@@ -505,12 +505,11 @@
       })
     );
     updateCountryInspector(explorer.USA || explorer[rows[0]?.countryCode]);
-    el.style.cursor = "pointer";
     el.on("plotly_hover", () => {
-      el.style.cursor = "pointer";
+      el.classList.add("is-hovering-country");
     });
     el.on("plotly_unhover", () => {
-      el.style.cursor = "pointer";
+      el.classList.remove("is-hovering-country");
     });
     el.on("plotly_click", (event) => {
       const countryCode = event?.points?.[0]?.location;
