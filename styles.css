@@ -351,8 +351,12 @@ figure {
 #plot-national-exposure,
 #plot-national-exposure .plotly,
 #plot-national-exposure .main-svg,
+#plot-national-exposure .geolayer,
+#plot-national-exposure .choroplethlayer,
+#plot-national-exposure .draglayer,
+#plot-national-exposure .draglayer *,
 #plot-national-exposure .choroplethlayer path {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .plot-small {
