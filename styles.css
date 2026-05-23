@@ -1,14 +1,16 @@
 :root {
-  --bg: #fbfcfd;
+  --bg: #ffffff;
   --panel: #ffffff;
-  --ink: #1f2328;
-  --muted: #626a73;
+  --ink: #1a1a1a;
+  --muted: #555f69;
   --quiet: #7b8490;
-  --line: #dce2e8;
-  --line-soft: #edf1f5;
-  --link: #185a8d;
-  --accent: #b44f2a;
-  --soft: #f7f8fa;
+  --line: #e0e0e0;
+  --line-soft: #eeeeee;
+  --link: #1f4b7a;
+  --accent: #8b2332;
+  --accent-dark: #6e1a28;
+  --accent-light: #f4e8ea;
+  --soft: #fafafa;
   --page-width: 1180px;
   --text-width: 900px;
   --copy-width: 760px;
@@ -31,10 +33,11 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: var(--sans);
+  font-family: var(--serif);
   font-size: 17px;
-  line-height: 1.55;
+  line-height: 1.65;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -46,12 +49,14 @@ a {
 .page {
   width: min(var(--page-width), calc(100% - (2 * var(--gutter))));
   margin: 0 auto;
-  padding: 26px 0 40px;
+  padding: 0 0 40px;
 }
 
 .paper-header {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 3.25rem 0 2rem;
   text-align: center;
-  padding: 6px 0 36px;
 }
 
 h1,
@@ -63,21 +68,13 @@ p {
 
 h1 {
   max-width: var(--text-width);
-  margin: 0 auto 8px;
+  margin: 0 auto 1.4rem;
   font-family: var(--serif);
-  font-size: clamp(32px, 3.6vw, 46px);
-  line-height: 1.04;
+  font-size: clamp(2rem, 3.2vw, 2.55rem);
+  line-height: 1.22;
   font-weight: 700;
   letter-spacing: 0;
   overflow-wrap: break-word;
-}
-
-.subtitle {
-  margin: 0 auto 12px;
-  color: var(--muted);
-  font-size: clamp(1.08rem, 1.7vw, 1.28rem);
-  line-height: 1.25;
-  text-align: center;
 }
 
 h2 {
@@ -88,82 +85,133 @@ h2 {
   text-align: left;
 }
 
-.hero-question {
+.author-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 0.75rem;
   max-width: var(--text-width);
-  margin: 0 auto 18px;
+  margin: 0 auto 1.45rem;
+}
+
+.author-row {
+  display: flex;
+  justify-content: center;
+  gap: 0 2.3rem;
+  width: 100%;
+}
+
+.author-card {
+  flex: 0 1 220px;
+  min-width: 180px;
+  text-align: center;
+}
+
+.author-name {
+  display: inline-block;
   color: var(--ink);
-  font-family: var(--serif);
-  font-size: clamp(1.24rem, 2.1vw, 1.7rem);
-  line-height: 1.18;
+  font-size: 1.04rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
 }
 
-.authors {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-  max-width: var(--text-width);
-  margin: 0 auto 18px;
-  font-size: 0.84rem;
+.author-name:hover,
+.author-name:focus-visible {
+  color: var(--accent);
 }
 
-.authors div {
-  min-width: 0;
-}
-
-.authors a,
-.authors div > span:first-child {
+.affiliation {
   display: block;
-  color: var(--link);
-  font-weight: 700;
-}
-
-.authors div > span:last-child {
-  display: block;
-  margin-top: 2px;
+  margin-top: 0.05rem;
   color: var(--muted);
-  font-size: 0.8rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
   line-height: 1.3;
 }
 
 .links {
   display: flex;
   justify-content: center;
-  gap: 6px;
+  gap: 0.75rem;
   flex-wrap: wrap;
-  margin-bottom: 18px;
+  margin: 0;
   font-family: var(--sans);
 }
 
 .links a {
-  min-height: 30px;
   display: inline-flex;
   align-items: center;
-  padding: 4px 12px;
-  border: 1px solid #cfd8e3;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
-  box-shadow: 0 1px 1px rgba(31, 35, 40, 0.04);
-  color: #26323d;
-  font-size: 0.84rem;
-  font-weight: 650;
+  gap: 0.42rem;
+  min-height: 38px;
+  padding: 0.54rem 1.05rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 550;
+  line-height: 1;
   text-decoration: none;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.links .btn-primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.links .btn-secondary {
+  background: var(--panel);
+  color: var(--ink);
+}
+
+.btn-icon {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
 }
 
 .links a:hover,
 .links a:focus-visible {
-  border-color: var(--link);
-  background: #f4f8fb;
-  box-shadow: 0 1px 4px rgba(24, 90, 141, 0.1);
-  color: var(--link);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
-.lead {
-  max-width: var(--copy-width);
+.links .btn-primary:hover,
+.links .btn-primary:focus-visible {
+  border-color: var(--accent-dark);
+  background: var(--accent-dark);
+  color: #ffffff;
+}
+
+.overview {
+  max-width: var(--page-width);
   margin: 0 auto;
+  padding: 1.45rem 0 2.25rem;
+}
+
+.overview-text {
+  max-width: 930px;
+  margin: 0 auto;
+  color: var(--ink);
+  font-size: clamp(1.08rem, 1.6vw, 1.18rem);
+  line-height: 1.72;
   text-align: left;
-  color: #38404a;
-  font-size: 1rem;
-  overflow-wrap: break-word;
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 700;
 }
 
 hr {
@@ -409,7 +457,7 @@ figcaption,
   width: 100%;
   margin-top: 22px;
   padding: 14px;
-  border: 1px solid rgba(180, 79, 42, 0.22);
+  border: 1px solid rgba(139, 35, 50, 0.18);
   border-radius: 10px;
   background: var(--panel);
   box-shadow:
@@ -513,15 +561,15 @@ figcaption,
 
 .country-inspector {
   align-self: start;
-  padding: 17px 18px 15px;
-  border: 1px solid rgba(180, 79, 42, 0.22);
+  padding: 18px 18px 16px;
+  border: 1px solid rgba(139, 35, 50, 0.22);
   border-top: 4px solid var(--accent);
   border-radius: var(--radius);
   background: var(--panel);
-  box-shadow: 0 8px 22px rgba(31, 35, 40, 0.06);
+  box-shadow: 0 8px 22px rgba(31, 35, 40, 0.055);
   font-family: var(--sans);
   font-size: 0.88rem;
-  line-height: 1.38;
+  line-height: 1.42;
 }
 
 .inspector-kicker,
@@ -540,7 +588,7 @@ figcaption,
   font-family: var(--serif);
   font-size: clamp(1.24rem, 1.65vw, 1.5rem);
   line-height: 1.1;
-  text-align: center;
+  text-align: left;
 }
 
 .inspector-meta {
@@ -548,12 +596,12 @@ figcaption,
   color: var(--muted);
   font-size: 0.82rem;
   line-height: 1.32;
-  text-align: center;
+  text-align: left;
   overflow-wrap: anywhere;
 }
 
 .country-inspector > .inspector-kicker {
-  text-align: center;
+  text-align: left;
 }
 
 .country-inspector.is-loaded .inspector-meta {
@@ -563,12 +611,12 @@ figcaption,
 .metric-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-bottom: 16px;
+  gap: 9px;
+  margin-bottom: 12px;
 }
 
 .metric-grid div {
-  padding: 10px;
+  padding: 9px 10px;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: #fafbfc;
@@ -576,14 +624,57 @@ figcaption,
 
 .metric-grid strong {
   display: block;
-  font-size: 1.02rem;
+  font-size: 1rem;
   line-height: 1.15;
   white-space: nowrap;
 }
 
+.inspector-summary {
+  margin: 0 0 13px;
+  color: #3d4650;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.inspector-advanced {
+  border-top: 1px solid var(--line-soft);
+  padding-top: 10px;
+}
+
+.inspector-advanced summary {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  color: var(--link);
+  cursor: pointer;
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1.25;
+  list-style: none;
+}
+
+.inspector-advanced summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  border: 1px solid rgba(31, 75, 122, 0.32);
+  border-radius: 50%;
+  color: var(--link);
+  font-size: 0.72rem;
+  font-style: italic;
+  line-height: 1;
+}
+
 .country-inspector h4 {
-  margin: 0;
-  padding-top: 2px;
+  margin: 12px 0 0;
+  padding-top: 0;
   font-size: 0.9rem;
   letter-spacing: 0;
 }
@@ -592,7 +683,7 @@ figcaption,
   margin: 5px 0 2px;
   color: var(--muted);
   font-size: 0.78rem;
-  line-height: 1.34;
+  line-height: 1.38;
 }
 
 .occupation-list {
@@ -607,7 +698,7 @@ figcaption,
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 4px;
-  padding: 9px 0;
+  padding: 8px 0;
   border-top: 1px solid var(--line-soft);
 }
 
@@ -620,7 +711,7 @@ figcaption,
 .occupation-main {
   font-size: 0.88rem;
   font-weight: 700;
-  line-height: 1.22;
+  line-height: 1.25;
 }
 
 .occupation-meta {
@@ -737,16 +828,29 @@ footer {
   }
 
   .paper-header {
-    padding-bottom: 32px;
+    padding: 2.55rem 0 1.55rem;
   }
 
   h1 {
-    font-size: clamp(25px, 4.2vw, 31px);
-    line-height: 1.14;
+    font-size: clamp(1.72rem, 4.4vw, 2rem);
+    line-height: 1.2;
   }
 
-  .authors {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .author-row {
+    gap: 0 1.3rem;
+  }
+
+  .author-card {
+    min-width: 0;
+  }
+
+  .overview {
+    padding: 0.95rem 0 1.55rem;
+  }
+
+  .overview-text {
+    font-size: 1.06rem;
+    line-height: 1.58;
   }
 
   .interactive-plot {
@@ -772,7 +876,7 @@ footer {
 @media (max-width: 560px) {
   :root {
     --gutter: 14px;
-    --section-space: 36px;
+    --section-space: 32px;
   }
 
   body {
@@ -781,51 +885,63 @@ footer {
 
   .page {
     width: min(var(--page-width), calc(100% - (2 * var(--gutter))));
-    padding-top: 24px;
   }
 
   .paper-header {
-    padding-bottom: 24px;
+    padding: 1.65rem 0 1rem;
   }
 
   h1 {
-    font-size: clamp(27px, 8vw, 34px);
-    line-height: 1.08;
+    margin-bottom: 0.95rem;
+    font-size: clamp(1.5rem, 6.8vw, 1.86rem);
+    line-height: 1.12;
   }
 
-  .subtitle {
-    margin-bottom: 9px;
-    font-size: 1rem;
+  .author-list {
+    row-gap: 0.56rem;
+    margin-bottom: 0.95rem;
   }
 
-  .hero-question {
-    margin-bottom: 14px;
-    font-size: clamp(1.08rem, 5vw, 1.34rem);
+  .author-row {
+    gap: 0 0.85rem;
   }
 
-  .authors {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px 8px;
-    margin-bottom: 14px;
-    font-size: 0.8rem;
+  .author-name {
+    font-size: 0.92rem;
+  }
+
+  .affiliation {
+    font-size: 0.74rem;
   }
 
   .links {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 7px;
-    margin-bottom: 16px;
   }
 
   .links a {
-    min-height: 30px;
-    padding: 4px 12px;
+    min-height: 34px;
+    padding: 0.45rem 0.8rem;
     flex: none;
     justify-content: center;
     text-align: center;
   }
 
-  .lead {
+  .overview {
+    padding: 0.65rem 0 1.1rem;
+  }
+
+  .overview-text {
+    font-size: 0.97rem;
+    line-height: 1.48;
+  }
+
+  .atlas-section {
+    padding-top: 30px;
+  }
+
+  .atlas-section > p {
     font-size: 0.96rem;
     line-height: 1.48;
   }
@@ -846,6 +962,7 @@ footer {
   .atlas-figure {
     width: 100%;
     padding: 10px;
+    margin-top: 14px;
   }
 
   .country-inspector {

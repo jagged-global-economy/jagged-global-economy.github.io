@@ -8,59 +8,92 @@
       name="description"
       content="Project page for The Jagged Global Economy: Frontier AI Unevenly Exposes National Economies."
     />
-    <link rel="stylesheet" href="styles.css?v=map-stable-cursor-20260522b" />
+    <link rel="stylesheet" href="styles.css?v=viewer-polish-20260522" />
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" defer></script>
-    <script src="assets/site.js?v=map-stable-cursor-20260522b" defer></script>
+    <script src="assets/site.js?v=viewer-polish-20260522" defer></script>
   </head>
   <body>
     <main class="page">
       <header class="paper-header">
         <h1>The Jagged Global Economy</h1>
-        <p class="subtitle">Frontier AI Unevenly Exposes National Economies</p>
-        <p class="hero-question">Which countries' workforces are most exposed to frontier AI?</p>
 
-        <div class="authors" aria-label="Authors and affiliations">
-          <div>
-            <a href="https://arulmurugan.me">Arul Murugan</a>
-            <span>UC Berkeley</span>
+        <div class="author-list" aria-label="Authors and affiliations">
+          <div class="author-row">
+            <div class="author-card">
+              <a class="author-name" href="https://arulmurugan.me">Arul Murugan</a>
+              <span class="affiliation">UC Berkeley</span>
+            </div>
+            <div class="author-card">
+              <a class="author-name" href="https://t6aguirre.github.io">Tomás Aguirre</a>
+              <span class="affiliation">University of São Paulo</span>
+            </div>
           </div>
-          <div>
-            <a href="https://t6aguirre.github.io">Tomás Aguirre</a>
-            <span>University of São Paulo</span>
-          </div>
-          <div>
-            <a href="https://www.abhishekn.com">Abhishek Nagaraj</a>
-            <span>UC Berkeley</span>
-          </div>
-          <div>
-            <a href="https://rishibommasani.github.io/">Rishi Bommasani</a>
-            <span>Stanford University</span>
+          <div class="author-row">
+            <div class="author-card">
+              <a class="author-name" href="https://www.abhishekn.com">Abhishek Nagaraj</a>
+              <span class="affiliation">UC Berkeley</span>
+            </div>
+            <div class="author-card">
+              <a class="author-name" href="https://rishibommasani.github.io/">Rishi Bommasani</a>
+              <span class="affiliation">Stanford University</span>
+            </div>
           </div>
         </div>
 
         <nav class="links" aria-label="Project links">
-          <a href="assets/paper.pdf">Paper</a>
-          <a href="data/core/nation_exposure_enriched.csv">Data</a>
-          <a href="https://github.com/arulmabr/jagged-global-economy/tree/main/code">Code</a>
-          <a href="#citation">Cite</a>
+          <a class="btn-primary" href="assets/paper.pdf">
+            <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z" />
+              <path d="M14 2v5h5" />
+              <path d="M9 13h6M9 17h4" />
+            </svg>
+            Paper
+          </a>
+          <a class="btn-secondary" href="data/core/nation_exposure_enriched.csv">
+            <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 5h16v14H4z" />
+              <path d="M4 10h16M9 5v14M15 5v14" />
+            </svg>
+            Data
+          </a>
+          <a class="btn-secondary" href="https://github.com/arulmabr/jagged-global-economy/tree/main/code">
+            <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m8 9-4 3 4 3" />
+              <path d="m16 9 4 3-4 3" />
+              <path d="m14 4-4 16" />
+            </svg>
+            Code
+          </a>
+          <a class="btn-secondary" href="#citation">
+            <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 17h4V9H5v8a4 4 0 0 1-2 3" />
+              <path d="M17 17h4V9h-6v8a4 4 0 0 1-2 3" />
+            </svg>
+            Cite
+          </a>
         </nav>
-
-        <p class="lead">
-          Exposure means how much of a country's current workforce is in jobs
-          whose tasks frontier AI can already help perform. We estimate it by
-          combining occupation-level AI exposure scores with employment data for
-          141 national labor markets. It describes today's workforce structure,
-          not a forecast of job losses, wages, or AI adoption.
-        </p>
       </header>
+
+      <div class="overview" aria-label="Overview">
+        <p class="overview-text">
+          How will frontier AI exposure differ across countries? We study
+          <span class="highlight">141 national labor markets</span> by combining
+          occupation-level AI exposure scores with employment data. Our score
+          measures how much of a country's current workforce is in jobs whose
+          tasks frontier AI can already help perform. It captures workforce
+          structure, not forecasts of job loss, wages, or AI adoption.
+        </p>
+      </div>
 
       <hr />
 
       <section id="national-exposure" class="figure-section atlas-section">
         <h2>National AI Exposure</h2>
         <p>
-          Darker countries have a larger share of workers in AI-exposed jobs.
-          Click a country to see which worker groups make up its score.
+          The map shows the national exposure score for each measured country.
+          Darker shading means more of the workforce is in AI-exposed jobs. Click
+          a country to compare its exposure and see the main worker groups behind
+          the score.
         </p>
         <figure class="interactive-figure atlas-figure">
           <div class="atlas-grid">
@@ -103,7 +136,7 @@
               <p id="inspector-meta" class="inspector-meta">
                 The panel opens with the United States when the interactive map
                 loads. Click any measured country to compare exposure and
-                occupation shares.
+                employment.
               </p>
               <div class="metric-grid">
                 <div>
@@ -115,14 +148,24 @@
                   <strong id="inspector-employment">--</strong>
                 </div>
               </div>
-              <h4>Largest Worker Groups by Employment Share</h4>
-              <p class="inspector-note">
-                Sorted by worker share. Each row shows employment share,
-                occupation exposure, and contribution to the national score.
+              <p id="inspector-summary" class="inspector-summary">
+                Click a country to see how its current workforce composition
+                relates to frontier AI exposure.
               </p>
-              <ul id="inspector-occupations" class="occupation-list">
-                <li>Loading occupation shares.</li>
-              </ul>
+              <details id="inspector-advanced" class="inspector-advanced">
+                <summary>
+                  <span class="summary-icon" aria-hidden="true">i</span>
+                  Advanced details
+                </summary>
+                <h4>Largest Worker Groups by Employment Share</h4>
+                <p class="inspector-note">
+                  Sorted by worker share. These rows show which occupation groups
+                  contribute most to the selected country's score.
+                </p>
+                <ul id="inspector-occupations" class="occupation-list">
+                  <li>Loading occupation shares.</li>
+                </ul>
+              </details>
             </aside>
           </div>
         </figure>

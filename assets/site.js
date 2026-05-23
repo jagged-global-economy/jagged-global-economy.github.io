@@ -414,16 +414,28 @@
     const meta = document.getElementById("inspector-meta");
     const exposure = document.getElementById("inspector-exposure");
     const employment = document.getElementById("inspector-employment");
+    const summary = document.getElementById("inspector-summary");
     const occupations = document.getElementById("inspector-occupations");
 
     if (name) name.textContent = country.countryName;
     if (meta) {
-      meta.textContent = [country.region, titleCase(country.incomeGroup)]
+      meta.textContent = [
+        country.region,
+        titleCase(country.incomeGroup),
+        country.reliability ? `${titleCase(country.reliability)} reliability` : null,
+      ]
         .filter((value) => value && value !== "n/a")
         .join(" · ");
     }
-    if (exposure) exposure.textContent = country.exposure?.toFixed(3) || "n/a";
+    if (exposure) {
+      exposure.textContent = Number.isFinite(country.exposure) ? country.exposure.toFixed(3) : "n/a";
+    }
     if (employment) employment.textContent = `${formatEmployment(country.totalEmploymentK)} workers`;
+    if (summary) {
+      summary.textContent =
+        `For ${country.countryName}, this score reflects how much of today's employment is in ` +
+        "occupations with tasks frontier AI can help perform. It is not a job-loss forecast.";
+    }
     if (!occupations) return;
 
     occupations.replaceChildren();
@@ -446,9 +458,9 @@
       const detail = document.createElement("span");
       detail.className = "occupation-meta";
       detail.textContent =
-        `${formatPercent(occupation.employmentSharePct)} of workers · ` +
-        `occupation exposure score ${occupation.exposureScore.toFixed(3)} · ` +
-        `${formatPercent(occupation.contributionPct)} of national exposure score`;
+        `Workers: ${formatPercent(occupation.employmentSharePct)} · ` +
+        `Occupation exposure: ${occupation.exposureScore.toFixed(3)} · ` +
+        `Share of national score: ${formatPercent(occupation.contributionPct)}`;
       item.append(main, detail);
       occupations.append(item);
     });
