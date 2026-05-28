@@ -1,5 +1,5 @@
 (async function () {
-  const DATA_URL = "assets/interactive_data.json?v=missing-country-hover-20260528";
+  const DATA_URL = "assets/interactive_data.json?v=comments-polish-20260528";
   const FONT_FAMILY = "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif";
   const BLUE = "#1f4b7a";
   const RED = "#8b2332";
@@ -15,12 +15,17 @@
     logGni: "#60723c",
     cmpNational: "#6f5d85",
   };
-  const FACTOR_DESCRIPTIONS = {
-    wcSharePct: "Percent of workers in ISCO 1-4 occupations, the paper's white-collar definition.",
-    internetPct: "Share of people using the internet. This is a digital-access comparison, not part of the exposure formula.",
-    logGni: "Country income level, measured as logged GNI per capita, PPP. This is a macro comparison, not part of the exposure formula.",
-    cmpNational: "The paper's cognitive-minus-physical score: more computer, document, and information-processing work scores higher; more physical/manual work scores lower.",
+  const FACTOR_LABELS = {
+    cmpNational: "Task mix",
   };
+  const FACTOR_DESCRIPTIONS = {
+    wcSharePct: "Share of workers in white-collar occupations (ISCO 1-4).",
+    internetPct: "Share of people using the internet.",
+    logGni: "GNI per person, adjusted for purchasing power.",
+    cmpNational: "Whether jobs lean toward cognitive and information-processing tasks rather than physical or manual tasks.",
+  };
+  const COMBINED_FACTOR_DESCRIPTION =
+    "Average percentile across the selected factors. Higher values mean a country ranks higher on the selected mix.";
   const EXPOSURE_COLORSCALE = [
     [0, "#f2f5f3"],
     [0.35, "#a8c7b8"],
@@ -152,6 +157,10 @@
     if (predictor.tickSuffix === "%") return `${value.toFixed(1)}%`;
     if (key === "logGni") return value.toFixed(2);
     return value.toFixed(2);
+  }
+
+  function factorLabel(key, predictor = {}) {
+    return FACTOR_LABELS[key] || predictor.label || titleCase(key);
   }
 
   function baseLayout(extra = {}) {
@@ -388,6 +397,20 @@
       slope,
       intercept,
     };
+  }
+
+  function rSquaredClient(points, xKey, yKey) {
+    const clean = points
+      .map((point) => ({ x: point[xKey], y: point[yKey] }))
+      .filter((point) => hasNumber(point.x) && hasNumber(point.y));
+    if (clean.length < 2) return null;
+    const xMean = clean.reduce((sum, point) => sum + point.x, 0) / clean.length;
+    const yMean = clean.reduce((sum, point) => sum + point.y, 0) / clean.length;
+    const xSS = clean.reduce((sum, point) => sum + (point.x - xMean) ** 2, 0);
+    const ySS = clean.reduce((sum, point) => sum + (point.y - yMean) ** 2, 0);
+    if (xSS === 0 || ySS === 0) return null;
+    const xy = clean.reduce((sum, point) => sum + (point.x - xMean) * (point.y - yMean), 0);
+    return (xy ** 2) / (xSS * ySS);
   }
 
   function adoptionAxis(extra = {}) {
@@ -843,6 +866,23 @@
 
     const selectedKeys = Object.keys(predictors).filter((key) => exposureFactors.has(key));
     target.replaceChildren();
+    if (selectedKeys.length > 1) {
+      const labels = selectedKeys.map((key) => factorLabel(key, predictors[key]));
+      const card = document.createElement("article");
+      card.className = "factor-description-card";
+      card.style.setProperty("--factor-color", BLUE);
+
+      const title = document.createElement("strong");
+      title.textContent = "Combined predictor";
+
+      const text = document.createElement("span");
+      text.textContent = `${COMBINED_FACTOR_DESCRIPTION} Selected: ${labels.join(", ")}.`;
+
+      card.append(title, text);
+      target.append(card);
+      return;
+    }
+
     selectedKeys.forEach((key) => {
       const predictor = predictors[key];
       const card = document.createElement("article");
@@ -850,7 +890,7 @@
       card.style.setProperty("--factor-color", FACTOR_COLORS[key] || BLUE);
 
       const title = document.createElement("strong");
-      title.textContent = predictor?.label || titleCase(key);
+      title.textContent = factorLabel(key, predictor);
 
       const text = document.createElement("span");
       text.textContent = FACTOR_DESCRIPTIONS[key] || predictor?.note || "";
@@ -884,33 +924,54 @@
   async function renderExposureDrivers(data) {
     const drivers = data.exposureDrivers || {};
     const selectedKeys = Object.keys(drivers.predictors || {}).filter((key) => exposureFactors.has(key));
-    const traces = [];
-    const metricNotes = [];
+    const isCombined = selectedKeys.length > 1;
+    const completeRows = (drivers.points || []).filter(
+      (row) => hasNumber(row.exposure) && selectedKeys.every((key) => hasNumber(row[key]))
+    );
+    const percentileMaps = {};
     selectedKeys.forEach((key) => {
-      const predictor = drivers.predictors[key];
-      const color = FACTOR_COLORS[key] || BLUE;
-      const rows = (drivers.points || []).filter((row) => hasNumber(row[key]) && hasNumber(row.exposure));
-      const sortedValues = [...rows].sort((a, b) => a[key] - b[key]);
-      const percentileByCountry = new Map(
+      const sortedValues = [...completeRows].sort((a, b) => a[key] - b[key]);
+      percentileMaps[key] = new Map(
         sortedValues.map((row, rank) => [
           row.countryCode,
-          rows.length > 1 ? (rank / (rows.length - 1)) * 100 : 50,
+          sortedValues.length > 1 ? (rank / (sortedValues.length - 1)) * 100 : 50,
         ])
       );
-      const points = rows.map((row) => ({
+    });
+
+    const points = completeRows.map((row) => {
+      const percentiles = selectedKeys.map((key) => percentileMaps[key].get(row.countryCode));
+      const predictorPercentile =
+        percentiles.reduce((sum, value) => sum + value, 0) / Math.max(percentiles.length, 1);
+      return {
         ...row,
-        predictorPercentile: percentileByCountry.get(row.countryCode),
-      }));
-      const fit = scatterFitTrace(
-        linearFitClient(points, "predictorPercentile", "exposure"),
-        `${predictor.label} fit`,
-        color,
-        { line: { color, width: 2.3 }, showlegend: false }
-      );
-      traces.push({
+        predictorPercentile,
+        factorDetails: selectedKeys
+          .map((key, index) => {
+            const predictor = drivers.predictors[key];
+            const label = factorLabel(key, predictor);
+            const value = formatFactorValue(key, row[key], predictor);
+            return `${label}: ${value} (${percentiles[index].toFixed(0)}th pct.)`;
+          })
+          .join("<br>"),
+      };
+    });
+
+    const primaryKey = selectedKeys[0];
+    const primaryPredictor = drivers.predictors[primaryKey] || {};
+    const traceName = isCombined ? "Combined predictor" : factorLabel(primaryKey, primaryPredictor);
+    const color = isCombined ? BLUE : FACTOR_COLORS[primaryKey] || BLUE;
+    const fit = scatterFitTrace(
+      linearFitClient(points, "predictorPercentile", "exposure"),
+      "Fit",
+      color,
+      { line: { color, width: 2.3 }, showlegend: false }
+    );
+    const traces = [
+      {
         type: "scatter",
         mode: "markers",
-        name: predictor.label,
+        name: traceName,
         x: points.map((row) => row.predictorPercentile),
         y: points.map((row) => row.exposure),
         text: points.map((row) => row.countryName),
@@ -919,26 +980,50 @@
           row.countryCode,
           row.region,
           row.incomeGroup,
-          formatFactorValue(key, row[key], predictor),
+          row.factorDetails,
         ]),
         marker: {
           color,
           size: 7.5,
-          opacity: selectedKeys.length > 1 ? 0.64 : 0.82,
+          opacity: 0.82,
           line: { color: "white", width: 0.7 },
         },
         hovertemplate:
           "<b>%{text}</b> (%{customdata[0]})<br>" +
-          `${predictor.label}: %{customdata[3]}<br>` +
-          "Predictor percentile: %{x:.0f}<br>" +
+          "%{customdata[3]}<br>" +
+          "Factor percentile: %{x:.0f}<br>" +
           "Exposure: %{y:.3f}<br>" +
           "Region: %{customdata[1]}<br>" +
           "Income group: %{customdata[2]}<extra></extra>",
-      });
-      if (fit) traces.push(fit);
-      const metric = drivers.metrics?.[key];
-      if (metric?.rSquared) metricNotes.push(`${predictor.label} R² = ${metric.rSquared.toFixed(2)}`);
-    });
+      },
+    ];
+    if (fit) traces.push(fit);
+
+    const metricNotes = [];
+    if (isCombined) {
+      const combinedR2 = rSquaredClient(points, "predictorPercentile", "exposure");
+      if (hasNumber(combinedR2)) metricNotes.push(`Combined predictor R² = ${combinedR2.toFixed(2)}`);
+    } else {
+      const metric = drivers.metrics?.[primaryKey];
+      if (metric?.rSquared) metricNotes.push(`${traceName} R² = ${metric.rSquared.toFixed(2)}`);
+    }
+    const annotations = metricNotes.length
+      ? [
+          {
+            xref: "paper",
+            yref: "paper",
+            x: 0.03,
+            y: 0.96,
+            showarrow: false,
+            align: "left",
+            bgcolor: "rgba(255,255,255,0.92)",
+            bordercolor: AXIS,
+            borderpad: 6,
+            font: { family: FONT_FAMILY, size: 12, color: INK },
+            text: metricNotes.join("<br>"),
+          },
+        ]
+      : [];
 
     await plot(
       "plot-white-collar",
@@ -955,31 +1040,8 @@
         yaxis: cartesianAxis({
           title: "National AI exposure",
         }),
-        annotations: [
-          {
-            xref: "paper",
-            yref: "paper",
-            x: 0.03,
-            y: 0.96,
-            showarrow: false,
-            align: "left",
-            bgcolor: "rgba(255,255,255,0.92)",
-            bordercolor: AXIS,
-            borderpad: 6,
-            font: { family: FONT_FAMILY, size: 12, color: INK },
-            text: metricNotes.join("<br>"),
-          },
-        ],
-        showlegend: selectedKeys.length > 1,
-        legend: {
-          orientation: "h",
-          x: 0.5,
-          xanchor: "center",
-          y: -0.25,
-          yanchor: "top",
-          font: { family: FONT_FAMILY, size: 11, color: MUTED },
-          itemsizing: "constant",
-        },
+        annotations,
+        showlegend: false,
       })
     );
     bindExposureFactorButtons(data);
@@ -1117,18 +1179,6 @@
             bordercolor: "rgba(31,75,122,0.18)",
             borderpad: 5,
             font: { family: FONT_FAMILY, size: 12, color: BLUE },
-          },
-          {
-            xref: "x",
-            yref: "y",
-            x: min + (max - min) * 0.78,
-            y: min + (max - min) * 0.78,
-            text: "Direct = remittance-accounted",
-            textangle: -18,
-            showarrow: false,
-            bgcolor: "rgba(255,255,255,0.72)",
-            borderpad: 2,
-            font: { family: FONT_FAMILY, size: 11, color: QUIET },
           },
         ],
         showlegend: false,
