@@ -1,5 +1,5 @@
 (async function () {
-  const DATA_URL = "assets/interactive_data.json?v=paper-predictors-20260527";
+  const DATA_URL = "assets/interactive_data.json?v=remittance-indicator-20260528";
   const FONT_FAMILY = "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif";
   const BLUE = "#1f4b7a";
   const RED = "#8b2332";
@@ -1025,11 +1025,15 @@
     const exposures = rows.flatMap((row) => [row.domesticExposure, row.remittanceExposure]);
     const min = Math.min(...exposures) - 0.01;
     const max = Math.max(...exposures) + 0.01;
-    const labelCodes = new Set(["TJK", "HND", "SLV"]);
+    const pointLabel = (countryCode) => {
+      if (countryCode === "HND") return "HND/GTM";
+      if (countryCode === "TJK" || countryCode === "SLV") return countryCode;
+      return "";
+    };
     const labelPositions = {
       TJK: "middle right",
       HND: "top left",
-      SLV: "top right",
+      SLV: "top center",
     };
     await plot(
       "plot-remittance",
@@ -1040,7 +1044,7 @@
           name: "Equal exposure",
           x: [min, max],
           y: [min, max],
-          line: { color: "rgba(85, 95, 105, 0.45)", width: 1, dash: "dash" },
+          line: { color: "rgba(85, 95, 105, 0.5)", width: 1.2, dash: "dash" },
           hoverinfo: "skip",
         },
         {
@@ -1049,9 +1053,10 @@
           name: "Countries",
           x: rows.map((row) => row.domesticExposure),
           y: rows.map((row) => row.remittanceExposure),
-          text: rows.map((row) => (labelCodes.has(row.countryCode) ? row.countryCode : "")),
+          text: rows.map((row) => pointLabel(row.countryCode)),
           textposition: rows.map((row) => labelPositions[row.countryCode] || "top center"),
-          textfont: { family: FONT_FAMILY, size: 10, color: MUTED },
+          textfont: { family: FONT_FAMILY, size: 11, color: INK },
+          cliponaxis: false,
           customdata: rows.map((row) => [
             row.countryCode,
             row.countryName,
@@ -1090,6 +1095,44 @@
         margin: { l: 64, r: 72, t: 18, b: 72 },
         xaxis: cartesianAxis({ title: "Direct national AI exposure", range: [min, max] }),
         yaxis: cartesianAxis({ title: "Remittance-accounted national AI exposure", range: [min, max] }),
+        shapes: [
+          {
+            type: "path",
+            xref: "x",
+            yref: "y",
+            path: `M ${min},${min} L ${min},${max} L ${max},${max} Z`,
+            fillcolor: "rgba(31, 75, 122, 0.055)",
+            line: { width: 0 },
+            layer: "below",
+          },
+        ],
+        annotations: [
+          {
+            xref: "x",
+            yref: "y",
+            x: min + (max - min) * 0.16,
+            y: max - (max - min) * 0.08,
+            text: "Remittances raise exposure",
+            showarrow: false,
+            align: "left",
+            bgcolor: "rgba(255,255,255,0.82)",
+            bordercolor: "rgba(31,75,122,0.18)",
+            borderpad: 5,
+            font: { family: FONT_FAMILY, size: 12, color: BLUE },
+          },
+          {
+            xref: "x",
+            yref: "y",
+            x: min + (max - min) * 0.78,
+            y: min + (max - min) * 0.78,
+            text: "Direct = remittance-accounted",
+            textangle: -28,
+            showarrow: false,
+            bgcolor: "rgba(255,255,255,0.72)",
+            borderpad: 2,
+            font: { family: FONT_FAMILY, size: 11, color: QUIET },
+          },
+        ],
         showlegend: false,
       })
     );
