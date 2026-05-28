@@ -1,5 +1,5 @@
 (async function () {
-  const DATA_URL = "assets/interactive_data.json?v=remittance-indicator-20260528";
+  const DATA_URL = "assets/interactive_data.json?v=remittance-label-angle-20260528";
   const FONT_FAMILY = "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif";
   const BLUE = "#1f4b7a";
   const RED = "#8b2332";
@@ -1126,7 +1126,7 @@
             x: min + (max - min) * 0.78,
             y: min + (max - min) * 0.78,
             text: "Direct = remittance-accounted",
-            textangle: -28,
+            textangle: -18,
             showarrow: false,
             bgcolor: "rgba(255,255,255,0.72)",
             borderpad: 2,
