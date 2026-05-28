@@ -60,6 +60,12 @@ bilateral remittance inflow shares.
 
 ## Main Tables
 
+- `data/country_exposure_adoption_snapshot.csv` is the quick-start
+  GitHub-previewable country table linked from the website's Data button. It
+  combines the national exposure score, rank, employment, reliability,
+  region/income metadata, white-collar structure, observed adoption measures
+  from Anthropic, OpenAI, and Microsoft where available, and remittance exposure
+  fields.
 - `data/core/nation_exposure_enriched.csv` is the central 141-country exposure
   panel. It combines measured national exposure with reliability, employment,
   income, labor-share, wage-weighted, and white-collar variables.
@@ -104,8 +110,11 @@ keeps aggregate robustness statistics and source links for that comparison.
 The website plots are generated from the released tables:
 
 ```bash
+python3.11 scripts/build_country_snapshot.py
 python3.11 scripts/build_interactive_data.py
 ```
 
-That script writes `assets/interactive_data.json`, a compact plotting payload
-containing only the fields needed by the static GitHub Pages site.
+The snapshot script writes `data/country_exposure_adoption_snapshot.csv` for
+reader-friendly GitHub preview. The plotting script writes
+`assets/interactive_data.json`, a compact payload containing only the fields
+needed by the static GitHub Pages site.

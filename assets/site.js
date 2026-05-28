@@ -1,5 +1,5 @@
 (async function () {
-  const DATA_URL = "assets/interactive_data.json?v=remittance-label-angle-20260528";
+  const DATA_URL = "assets/interactive_data.json?v=data-link-polish-20260528";
   const FONT_FAMILY = "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif";
   const BLUE = "#1f4b7a";
   const RED = "#8b2332";
@@ -948,7 +948,7 @@
       baseLayout({
         margin: { l: 64, r: 72, t: 28, b: 72 },
         xaxis: cartesianAxis({
-          title: "Predictor percentile among measured countries (0 = lowest, 100 = highest)",
+          title: "Factor percentile",
           range: [0, 102.5],
           tickmode: "array",
           tickvals: [0, 20, 40, 60, 80, 100],

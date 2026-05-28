@@ -10,6 +10,9 @@ mirrors, and non-release drafting material are also excluded.
 
 - `data/`: derived CSV tables used for the paper's core exposure,
   mechanism, validation, robustness, remittance, and aggregate analyses.
+- `data/country_exposure_adoption_snapshot.csv`: quick-start country-level
+  table for previewing national exposure, employment, adoption, and remittance
+  fields in one place.
 - `manifest.csv`: table-level inventory.
 - `data_dictionary.csv`: inferred column-level data dictionary.
 - `source_data_manifest.csv`: upstream source inventory.
