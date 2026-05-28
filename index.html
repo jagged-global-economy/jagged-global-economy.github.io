@@ -9,9 +9,9 @@
       content="Project page for The Jagged Global Economy: Frontier AI Unevenly Exposes National Economies."
     />
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="styles.css?v=map-controls-20260527" />
+    <link rel="stylesheet" href="styles.css?v=final-polish-20260527" />
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" defer></script>
-    <script src="assets/site.js?v=remittance-clean-20260527" defer></script>
+    <script src="assets/site.js?v=final-polish-20260527" defer></script>
   </head>
   <body>
     <main class="page">
@@ -80,16 +80,14 @@
         <p class="overview-text">
           Frontier AI is being built by a small number of mostly US and Chinese
           companies, but the work it can affect is distributed across the world.
-          Most evidence on AI's economic impact still focuses on the United
-          States and other high-income economies. We study
-          <span class="highlight">141 national labor markets</span> to ask a more
-          global question: how exposed is each country's current workforce to
-          tasks frontier AI can already help perform? Our measure combines
+          We study <span class="highlight">141 national labor markets</span> to
+          ask a global question: how exposed is each country's current workforce
+          to tasks frontier AI can already help perform? Our measure combines
           occupation-level AI exposure scores with each country's employment mix.
-          We find that exposure is highly uneven across countries, closely tied
-          to white-collar workforce composition, higher for women in most
-          countries, and predictive of observed AI adoption. It captures workforce
-          structure, not a forecast of job loss, wages, or AI adoption.
+          We find large cross-country differences tied to white-collar work,
+          gendered labor-market composition, observed AI adoption, and
+          remittances. It captures workforce structure, not a forecast of job
+          loss, wages, or AI adoption.
         </p>
       </div>
 
@@ -128,7 +126,7 @@
                   >
                     <span class="map-legend-title">Exposure score</span>
                     <div class="map-legend-scale" aria-hidden="true">
-                      <span class="map-legend-ramp"></span>
+                      <span class="map-legend-ramp">&nbsp;</span>
                       <span class="map-legend-ticks">
                         <span id="legend-exposure-min">0.14</span>
                         <span id="legend-exposure-mid">0.26</span>
@@ -406,12 +404,22 @@
         textarea.value = text;
         textarea.setAttribute("readonly", "");
         textarea.style.position = "fixed";
-        textarea.style.top = "-1000px";
-        textarea.style.left = "-1000px";
+        textarea.style.top = "0";
+        textarea.style.left = "0";
+        textarea.style.width = "1px";
+        textarea.style.height = "1px";
+        textarea.style.opacity = "0";
+        textarea.style.pointerEvents = "none";
         document.body.append(textarea);
         textarea.focus();
         textarea.select();
-        const copied = document.execCommand("copy");
+        textarea.setSelectionRange(0, text.length);
+        let copied = false;
+        try {
+          copied = document.execCommand("copy");
+        } catch (error) {
+          copied = false;
+        }
         textarea.remove();
         return copied;
       }

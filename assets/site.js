@@ -1,5 +1,5 @@
 (async function () {
-  const DATA_URL = "assets/interactive_data.json?v=remittance-clean-20260527";
+  const DATA_URL = "assets/interactive_data.json?v=final-polish-20260527";
   const FONT_FAMILY = "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif";
   const BLUE = "#1f4b7a";
   const RED = "#8b2332";
@@ -420,7 +420,7 @@
       align: options.align || "right",
       text: SOURCE_TEXT,
       font: {
-        family: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
+        family: FONT_FAMILY,
         size: options.size || 10,
         color: "#73777c",
       },
@@ -992,6 +992,11 @@
     const min = Math.min(...exposures) - 0.01;
     const max = Math.max(...exposures) + 0.01;
     const labelCodes = new Set(["TJK", "HND", "SLV"]);
+    const labelPositions = {
+      TJK: "middle right",
+      HND: "top left",
+      SLV: "top right",
+    };
     await plot(
       "plot-remittance",
       [
@@ -1011,7 +1016,7 @@
           x: rows.map((row) => row.domesticExposure),
           y: rows.map((row) => row.remittanceExposure),
           text: rows.map((row) => (labelCodes.has(row.countryCode) ? row.countryCode : "")),
-          textposition: "top center",
+          textposition: rows.map((row) => labelPositions[row.countryCode] || "top center"),
           textfont: { family: FONT_FAMILY, size: 10, color: MUTED },
           customdata: rows.map((row) => [
             row.countryCode,
