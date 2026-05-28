@@ -1126,7 +1126,7 @@
       GTM: "bottom right",
       SLV: "top center",
       TON: "top right",
-      LBN: "middle left",
+      LBN: "bottom right",
       MNE: "bottom left",
     };
     await plot(
