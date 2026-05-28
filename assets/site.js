@@ -1,5 +1,5 @@
 (async function () {
-  const DATA_URL = "assets/interactive_data.json?v=plot-style-20260527";
+  const DATA_URL = "assets/interactive_data.json?v=remittance-clean-20260527";
   const FONT_FAMILY = "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif";
   const BLUE = "#1f4b7a";
   const RED = "#8b2332";
@@ -991,7 +991,7 @@
     const exposures = rows.flatMap((row) => [row.domesticExposure, row.remittanceExposure]);
     const min = Math.min(...exposures) - 0.01;
     const max = Math.max(...exposures) + 0.01;
-    const labelCodes = new Set(["TJK", "HND", "GTM", "SLV", "KGZ"]);
+    const labelCodes = new Set(["TJK", "HND", "SLV"]);
     await plot(
       "plot-remittance",
       [
@@ -1001,7 +1001,7 @@
           name: "Equal exposure",
           x: [min, max],
           y: [min, max],
-          line: { color: "#9aa0a6", width: 1.5, dash: "dash" },
+          line: { color: "rgba(85, 95, 105, 0.45)", width: 1, dash: "dash" },
           hoverinfo: "skip",
         },
         {
@@ -1012,7 +1012,7 @@
           y: rows.map((row) => row.remittanceExposure),
           text: rows.map((row) => (labelCodes.has(row.countryCode) ? row.countryCode : "")),
           textposition: "top center",
-          textfont: { size: 11, color: "#303842" },
+          textfont: { family: FONT_FAMILY, size: 10, color: MUTED },
           customdata: rows.map((row) => [
             row.countryCode,
             row.countryName,
@@ -1022,11 +1022,20 @@
           ]),
           marker: {
             color: rows.map((row) => row.remittancePctGdp),
-            colorscale: "YlOrRd",
-            size: rows.map((row) => Math.max(8, Math.min(22, row.remittancePctGdp / 2.2))),
-            opacity: 0.82,
+            colorscale: [
+              [0, "#f8efe5"],
+              [0.42, "#d99763"],
+              [1, "#8b2332"],
+            ],
+            size: rows.map((row) => Math.max(7, Math.min(17, row.remittancePctGdp / 2.8))),
+            opacity: 0.76,
             line: { color: "white", width: 0.7 },
-            colorbar: { title: "Remittance<br>% GDP", thickness: 12 },
+            colorbar: {
+              title: { text: "Remittance<br>(% GDP)", font: { family: FONT_FAMILY, size: 12, color: MUTED } },
+              thickness: 10,
+              tickfont: { family: FONT_FAMILY, size: 11, color: MUTED },
+              outlinecolor: AXIS,
+            },
           },
           hovertemplate:
             "<b>%{customdata[1]}</b> (%{customdata[0]})<br>" +
@@ -1038,39 +1047,9 @@
         },
       ],
       baseLayout({
-        margin: { l: 64, r: 72, t: 28, b: 72 },
+        margin: { l: 64, r: 72, t: 18, b: 72 },
         xaxis: cartesianAxis({ title: "Direct national AI exposure", range: [min, max] }),
         yaxis: cartesianAxis({ title: "Remittance-accounted national AI exposure", range: [min, max] }),
-        annotations: [
-          {
-            xref: "paper",
-            yref: "paper",
-            x: 0.03,
-            y: 0.96,
-            showarrow: false,
-            align: "left",
-            bgcolor: "rgba(255,255,255,0.86)",
-            bordercolor: "#dadce0",
-            borderpad: 6,
-            text: "Countries with remittances ≥10% of GDP",
-          },
-          {
-            xref: "paper",
-            yref: "paper",
-            x: 0.66,
-            y: 0.72,
-            axref: "paper",
-            ayref: "paper",
-            ax: 0.56,
-            ay: 0.61,
-            showarrow: true,
-            arrowcolor: "#7b8490",
-            arrowwidth: 1,
-            align: "left",
-            font: { size: 11, color: "#555f69" },
-            text: "above line: higher<br>remittance-linked exposure",
-          },
-        ],
         showlegend: false,
       })
     );
