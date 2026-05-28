@@ -23,7 +23,7 @@
     internetPct: "Share of people using the internet.",
     logGni: "Gross national income per person, adjusted for purchasing power.",
     cmpNational:
-      "Countries score higher when more workers are in jobs with cognitive, computer, document, and information-processing tasks; they score lower when work is more physical or manual.",
+      "How much a country's jobs lean toward cognitive and information-processing tasks rather than physical or manual tasks.",
   };
   const COMBINED_FACTOR_DESCRIPTION =
     "Averages each country's percentile across the active factors.";
@@ -878,24 +878,35 @@
       const text = document.createElement("span");
       text.textContent = COMBINED_FACTOR_DESCRIPTION;
 
-      const selectedList = document.createElement("div");
-      selectedList.className = "selected-factor-list";
-      selectedList.setAttribute(
+      const definitionList = document.createElement("div");
+      definitionList.className = "selected-factor-definitions";
+      definitionList.setAttribute(
         "aria-label",
-        `Active factors: ${selectedKeys.map((key) => factorLabel(key, predictors[key])).join(", ")}.`
+        `Active factor definitions: ${selectedKeys
+          .map((key) => `${factorLabel(key, predictors[key])}: ${FACTOR_DESCRIPTIONS[key] || predictors[key]?.note || ""}`)
+          .join(" ")}`
       );
-      selectedList.setAttribute("role", "list");
+      definitionList.setAttribute("role", "list");
       selectedKeys.forEach((key) => {
-        const pill = document.createElement("span");
-        pill.className = "selected-factor-pill";
-        pill.setAttribute("role", "listitem");
-        pill.style.setProperty("--factor-color", FACTOR_COLORS[key] || BLUE);
-        pill.style.setProperty("--factor-tint", `${FACTOR_COLORS[key] || BLUE}17`);
-        pill.textContent = factorLabel(key, predictors[key]);
-        selectedList.append(pill);
+        const row = document.createElement("div");
+        row.className = "selected-factor-definition";
+        row.setAttribute("role", "listitem");
+        row.style.setProperty("--factor-color", FACTOR_COLORS[key] || BLUE);
+        row.style.setProperty("--factor-tint", `${FACTOR_COLORS[key] || BLUE}17`);
+
+        const label = document.createElement("strong");
+        label.className = "selected-factor-name";
+        label.textContent = factorLabel(key, predictors[key]);
+
+        const definition = document.createElement("span");
+        definition.className = "selected-factor-definition-text";
+        definition.textContent = FACTOR_DESCRIPTIONS[key] || predictors[key]?.note || "";
+
+        row.append(label, definition);
+        definitionList.append(row);
       });
 
-      card.append(title, text, selectedList);
+      card.append(title, text, definitionList);
       target.append(card);
       return;
     }

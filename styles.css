@@ -390,26 +390,35 @@ section > h2,
   gap: 6px;
 }
 
-.selected-factor-list {
-  display: flex;
-  flex-wrap: wrap;
+.selected-factor-definitions {
+  display: grid;
   gap: 5px;
   margin-top: 1px;
 }
 
-.factor-description-card .selected-factor-pill {
-  display: inline-flex;
-  align-items: center;
-  min-height: 22px;
-  padding: 3px 7px;
+.selected-factor-definition {
+  display: grid;
+  grid-template-columns: minmax(118px, 0.28fr) 1fr;
+  gap: 8px;
+  align-items: start;
+  padding: 6px 8px;
   border: 1px solid var(--line-soft);
-  border-color: color-mix(in srgb, var(--factor-color, var(--link)) 52%, white);
-  border-radius: 999px;
+  border-left: 3px solid var(--factor-color, var(--link));
+  border-radius: 5px;
   background: var(--factor-tint, #f5f7f9);
+}
+
+.factor-description-card .selected-factor-name {
   color: var(--factor-color, var(--link));
-  font-size: 0.72rem;
-  font-weight: 750;
-  line-height: 1.1;
+  font-size: 0.73rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.factor-description-card .selected-factor-definition-text {
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.3;
 }
 
 .factor-help {
