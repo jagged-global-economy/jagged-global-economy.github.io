@@ -12,6 +12,7 @@
   --accent-light: #f4e8ea;
   --soft: #fafafa;
   --page-width: 1240px;
+  --atlas-width: 1500px;
   --text-width: 900px;
   --copy-width: 760px;
   --radius: 8px;
@@ -386,41 +387,6 @@ section > h2,
   line-height: 1.35;
 }
 
-.factor-description-card-combined {
-  gap: 6px;
-}
-
-.selected-factor-definitions {
-  display: grid;
-  gap: 5px;
-  margin-top: 1px;
-}
-
-.selected-factor-definition {
-  display: grid;
-  grid-template-columns: minmax(118px, 0.28fr) 1fr;
-  gap: 8px;
-  align-items: start;
-  padding: 6px 8px;
-  border: 1px solid var(--line-soft);
-  border-left: 3px solid var(--factor-color, var(--link));
-  border-radius: 5px;
-  background: var(--factor-tint, #f5f7f9);
-}
-
-.factor-description-card .selected-factor-name {
-  color: var(--factor-color, var(--link));
-  font-size: 0.73rem;
-  font-weight: 800;
-  line-height: 1.25;
-}
-
-.factor-description-card .selected-factor-definition-text {
-  color: var(--muted);
-  font-size: 0.74rem;
-  line-height: 1.3;
-}
-
 .factor-help {
   margin: 0 auto 8px;
   color: var(--quiet);
@@ -428,39 +394,6 @@ section > h2,
   font-size: 0.74rem;
   font-weight: 650;
   text-align: center;
-}
-
-.findings {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: finding;
-}
-
-.findings li {
-  position: relative;
-  min-height: 52px;
-  margin: 0 0 22px;
-  padding-left: 62px;
-  counter-increment: finding;
-}
-
-.findings li::before {
-  content: counter(finding);
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 38px;
-  color: var(--accent);
-  font-family: var(--sans);
-  font-size: 1.72rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.findings strong {
-  display: block;
-  margin-bottom: 4px;
 }
 
 .figure-section p,
@@ -540,6 +473,19 @@ figure {
   cursor: pointer !important;
 }
 
+#plot-national-exposure .choroplethlayer path {
+  transition:
+    filter 0.12s ease,
+    stroke 0.12s ease,
+    stroke-width 0.12s ease;
+}
+
+#plot-national-exposure .choroplethlayer path:hover {
+  filter: brightness(0.92);
+  stroke: rgba(139, 35, 50, 0.92) !important;
+  stroke-width: 1.25px !important;
+}
+
 .plot-small {
   height: 360px;
   min-height: 360px;
@@ -591,6 +537,12 @@ figcaption,
   text-align: center;
 }
 
+.atlas-section {
+  width: min(var(--atlas-width), calc(100vw - (2 * var(--gutter))));
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
 .atlas-section > p {
   max-width: var(--copy-width);
 }
@@ -607,8 +559,8 @@ figcaption,
 
 .atlas-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(300px, 330px);
-  gap: 16px;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 300px);
+  gap: 14px;
   align-items: start;
 }
 
@@ -719,7 +671,7 @@ figcaption,
 
 .country-inspector {
   align-self: start;
-  padding: 16px 16px 14px;
+  padding: 14px 14px 12px;
   border: 1px solid rgba(139, 35, 50, 0.22);
   border-top: 4px solid var(--accent);
   border-radius: var(--radius);
@@ -755,7 +707,15 @@ figcaption,
   font-size: 0.82rem;
   line-height: 1.32;
   text-align: left;
-  overflow-wrap: anywhere;
+}
+
+.inspector-meta-line {
+  display: block;
+}
+
+.inspector-reliability {
+  margin-top: 2px;
+  white-space: nowrap;
 }
 
 .country-inspector > .inspector-kicker {
@@ -796,24 +756,34 @@ figcaption,
 }
 
 .comparison-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  display: grid;
+  gap: 4px;
   margin: 0 0 12px;
 }
 
 .comparison-pill {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  min-height: 24px;
-  padding: 4px 8px;
-  border: 1px solid rgba(31, 75, 122, 0.16);
-  border-radius: 999px;
-  background: #f7fafc;
-  color: #30485c;
-  font-size: 0.72rem;
-  font-weight: 700;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 650;
   line-height: 1.2;
+}
+
+.comparison-pill::before {
+  content: "";
+  flex: none;
+  width: 5px;
+  height: 5px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: var(--link);
+  opacity: 0.72;
 }
 
 .snapshot-grid {
@@ -845,49 +815,10 @@ figcaption,
   line-height: 1.25;
 }
 
-.snapshot-note,
-.labor-split-labels {
+.snapshot-note {
   color: var(--muted);
   font-size: 0.75rem;
   line-height: 1.3;
-}
-
-.labor-split {
-  display: grid;
-  gap: 4px;
-  margin-top: 2px;
-}
-
-.labor-split-bar {
-  display: block;
-  height: 8px;
-  border-radius: 999px;
-  background: #e3e8ed;
-  overflow: hidden;
-}
-
-.labor-split-wc {
-  display: block;
-  height: 100%;
-  border-radius: inherit;
-  background: var(--link);
-}
-
-.mini-chip-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 3px;
-}
-
-.mini-chip {
-  padding: 3px 6px;
-  border-radius: 999px;
-  background: #f0f2f4;
-  color: var(--muted);
-  font-size: 0.69rem;
-  font-weight: 700;
-  line-height: 1.2;
 }
 
 .inspector-accordion {
@@ -957,14 +888,15 @@ figcaption,
 }
 
 .occupation-list.occupation-bars {
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0 16px;
 }
 
 .occupation-list li {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 5px;
-  padding: 8px 0;
+  gap: 4px;
+  padding: 7px 0;
   border-top: 1px solid var(--line-soft);
 }
 
@@ -975,7 +907,7 @@ figcaption,
 }
 
 .occupation-main {
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 700;
   line-height: 1.25;
 }
@@ -991,7 +923,7 @@ figcaption,
 
 .occupation-toggle button {
   min-height: 27px;
-  padding: 4px 10px;
+  padding: 4px 9px;
   border: 0;
   border-right: 1px solid var(--line);
   background: var(--panel);
@@ -1018,7 +950,7 @@ figcaption,
 
 .occupation-track {
   display: block;
-  height: 8px;
+  height: 7px;
   border-radius: 999px;
   background: #edf1f5;
   overflow: hidden;
@@ -1033,14 +965,14 @@ figcaption,
 
 .occupation-value {
   color: var(--ink);
-  font: 700 0.74rem/1.2 var(--sans);
+  font: 700 0.7rem/1.2 var(--sans);
   white-space: nowrap;
 }
 
 .occupation-meta {
   margin-top: 1px;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   line-height: 1.32;
 }
 
@@ -1318,15 +1250,6 @@ footer {
   .atlas-section > p {
     font-size: 0.96rem;
     line-height: 1.48;
-  }
-
-  .findings li {
-    padding-left: 50px;
-  }
-
-  .findings li::before {
-    width: 34px;
-    font-size: 1.55rem;
   }
 
   .plot-map {

@@ -25,8 +25,6 @@
     cmpNational:
       "How much a country's jobs lean toward cognitive and information-processing tasks rather than physical or manual tasks.",
   };
-  const COMBINED_FACTOR_DESCRIPTION =
-    "Averages each country's percentile across the active factors.";
   const EXPOSURE_COLORSCALE = [
     [0, "#f2f5f3"],
     [0.35, "#a8c7b8"],
@@ -67,7 +65,7 @@
   let countryExplorer = {};
   let currentCountryCode = null;
   let occupationSort = "employment";
-  let exposureFactors = new Set(["wcSharePct"]);
+  let exposureFactor = "wcSharePct";
 
   const config = {
     responsive: true,
@@ -135,22 +133,6 @@
   function reliabilityLabel(value) {
     if (!value) return null;
     return `${titleCase(value)} data reliability`;
-  }
-
-  function adoptionLabel(sourceKey) {
-    return {
-      anthropic: "Anthropic Claude",
-      signals: "OpenAI Signals",
-      microsoft: "Microsoft AI Diffusion",
-    }[sourceKey] || titleCase(sourceKey);
-  }
-
-  function formatAdoptionValue(sourceKey, value) {
-    if (!hasNumber(value)) return "n/a";
-    if (sourceKey === "signals") return `${ordinal(value * 100)} percentile`;
-    if (sourceKey === "microsoft") return `${value.toFixed(1)}% WAP`;
-    if (sourceKey === "anthropic") return `${compactNumber(value, 1)} / 100k WAP`;
-    return compactNumber(value, 2);
   }
 
   function formatFactorValue(key, value, predictor) {
@@ -374,46 +356,6 @@
     };
   }
 
-  function linearFitClient(points, xKey, yKey) {
-    const clean = points
-      .map((point) => ({ x: point[xKey], y: point[yKey] }))
-      .filter((point) => hasNumber(point.x) && hasNumber(point.y));
-    if (clean.length < 2) return { points: [], slope: null, intercept: null };
-    const xMean = clean.reduce((sum, point) => sum + point.x, 0) / clean.length;
-    const yMean = clean.reduce((sum, point) => sum + point.y, 0) / clean.length;
-    const denom = clean.reduce((sum, point) => sum + (point.x - xMean) ** 2, 0);
-    if (denom === 0) return { points: [], slope: null, intercept: null };
-    const slope = clean.reduce(
-      (sum, point) => sum + (point.x - xMean) * (point.y - yMean),
-      0
-    ) / denom;
-    const intercept = yMean - slope * xMean;
-    const xMin = Math.min(...clean.map((point) => point.x));
-    const xMax = Math.max(...clean.map((point) => point.x));
-    return {
-      points: [
-        { x: xMin, y: intercept + slope * xMin },
-        { x: xMax, y: intercept + slope * xMax },
-      ],
-      slope,
-      intercept,
-    };
-  }
-
-  function rSquaredClient(points, xKey, yKey) {
-    const clean = points
-      .map((point) => ({ x: point[xKey], y: point[yKey] }))
-      .filter((point) => hasNumber(point.x) && hasNumber(point.y));
-    if (clean.length < 2) return null;
-    const xMean = clean.reduce((sum, point) => sum + point.x, 0) / clean.length;
-    const yMean = clean.reduce((sum, point) => sum + point.y, 0) / clean.length;
-    const xSS = clean.reduce((sum, point) => sum + (point.x - xMean) ** 2, 0);
-    const ySS = clean.reduce((sum, point) => sum + (point.y - yMean) ** 2, 0);
-    if (xSS === 0 || ySS === 0) return null;
-    const xy = clean.reduce((sum, point) => sum + (point.x - xMean) * (point.y - yMean), 0);
-    return (xy ** 2) / (xSS * ySS);
-  }
-
   function adoptionAxis(extra = {}) {
     return cartesianAxis(extra);
   }
@@ -549,21 +491,11 @@
     updateCountryInspector(country);
   }
 
-  function peerLabelFromIncome(value) {
-    if (!value) return "income group";
-    return String(value)
-      .toLowerCase()
-      .replace("high income", "high-income")
-      .replace("upper middle income", "upper-middle-income")
-      .replace("lower middle income", "lower-middle-income")
-      .replace("low income", "low-income");
-  }
-
-  function appendComparison(parent, label, value) {
+  function appendComparison(parent, label) {
     if (!label) return;
     const item = document.createElement("span");
     item.className = "comparison-pill";
-    item.textContent = value ? `${label} (${value})` : label;
+    item.textContent = label;
     parent.append(item);
   }
 
@@ -573,13 +505,11 @@
     target.replaceChildren();
     appendComparison(
       target,
-      comparisonPhrase(country.incomeExposureDelta, peerLabelFromIncome(country.incomeGroup)),
-      formatExposure(country.incomeAverageExposure)
+      comparisonPhrase(country.incomeExposureDelta, "income-group")
     );
     appendComparison(
       target,
-      comparisonPhrase(country.regionExposureDelta, country.region),
-      formatExposure(country.regionAverageExposure)
+      comparisonPhrase(country.regionExposureDelta, "region")
     );
   }
 
@@ -603,24 +533,6 @@
     parent.append(card);
   }
 
-  function renderLaborSplit(labor) {
-    if (!hasNumber(labor.whiteCollarSharePct)) return null;
-    const blueShare = Math.max(0, 100 - labor.whiteCollarSharePct);
-    const wrap = document.createElement("span");
-    wrap.className = "labor-split";
-    const bar = document.createElement("span");
-    bar.className = "labor-split-bar";
-    const wc = document.createElement("span");
-    wc.className = "labor-split-wc";
-    wc.style.width = `${Math.max(0, Math.min(100, labor.whiteCollarSharePct))}%`;
-    bar.append(wc);
-    const labels = document.createElement("span");
-    labels.className = "labor-split-labels";
-    labels.textContent = `Remaining ${formatPercent(blueShare)} non-white-collar workers`;
-    wrap.append(bar, labels);
-    return wrap;
-  }
-
   function renderSnapshot(country) {
     const target = document.getElementById("inspector-snapshot");
     if (!target) return;
@@ -629,37 +541,21 @@
     const labor = country.laborStructure || {};
     appendSnapshotCard(
       target,
-      "Labor composition",
-      hasNumber(labor.whiteCollarSharePct) ? `${formatPercent(labor.whiteCollarSharePct)} white-collar` : "",
-      hasNumber(labor.whiteCollarExposure) && hasNumber(labor.blueCollarExposure)
-        ? `Exposure: white-collar ${formatExposure(labor.whiteCollarExposure)}, non-white-collar ${formatExposure(labor.blueCollarExposure)}`
-        : "",
-      renderLaborSplit(labor)
+      "White-collar share",
+      hasNumber(labor.whiteCollarSharePct) ? formatPercent(labor.whiteCollarSharePct) : ""
     );
 
     const gender = country.gender;
     if (gender && hasNumber(gender.gap)) {
-      const direction = gender.gap >= 0 ? "Women higher" : "Men higher";
+      const absGap = Math.abs(gender.gap);
+      const direction =
+        absGap < 0.005 ? "Minimal gender variation" : gender.gap > 0 ? "Women more exposed" : "Men more exposed";
       appendSnapshotCard(
         target,
-        "Gender",
-        `${direction} by ${Math.abs(gender.gap).toFixed(3)}`,
-        `Women ${formatExposure(gender.femaleExposure)} · men ${formatExposure(gender.maleExposure)}`
+        direction,
+        `Women ${formatExposure(gender.femaleExposure)} · men ${formatExposure(gender.maleExposure)}`,
+        absGap >= 0.005 ? `Gap ${absGap.toFixed(3)}` : ""
       );
-    }
-
-    const adoption = country.adoption || {};
-    const adoptionEntries = Object.entries(adoption);
-    if (adoptionEntries.length) {
-      const chips = document.createElement("span");
-      chips.className = "mini-chip-row";
-      adoptionEntries.forEach(([sourceKey, observation]) => {
-        const chip = document.createElement("span");
-        chip.className = "mini-chip";
-        chip.textContent = `${adoptionLabel(sourceKey)}: ${formatAdoptionValue(sourceKey, observation.value)}`;
-        chips.append(chip);
-      });
-      appendSnapshotCard(target, "Observed adoption", "Validation data available", "", chips);
     }
   }
 
@@ -709,9 +605,9 @@
       const detail = document.createElement("span");
       detail.className = "occupation-meta";
       detail.textContent =
-        `Occupation exposure ${formatExposure(occupation.exposureScore)} · ` +
-        `Workers ${formatPercent(occupation.employmentSharePct)} · ` +
-        `Score contribution ${formatPercent(occupation.contributionPct)} of national score`;
+        occupationSort === "contribution"
+          ? `Workers ${formatPercent(occupation.employmentSharePct)} · exposure ${formatExposure(occupation.exposureScore)}`
+          : `Exposure ${formatExposure(occupation.exposureScore)} · score share ${formatPercent(occupation.contributionPct)}`;
 
       item.append(main, barRow, detail);
       occupations.append(item);
@@ -753,21 +649,24 @@
 
     if (name) name.textContent = country.countryName;
     if (meta) {
-      meta.textContent = [
-        country.region,
-        titleCase(country.incomeGroup),
-        reliabilityLabel(country.reliability),
-      ]
+      meta.replaceChildren();
+      const contextLine = document.createElement("span");
+      contextLine.className = "inspector-meta-line";
+      contextLine.textContent = [country.region, titleCase(country.incomeGroup)]
         .filter((value) => value && value !== "n/a")
         .join(" · ");
+      const reliabilityLine = document.createElement("span");
+      reliabilityLine.className = "inspector-meta-line inspector-reliability";
+      reliabilityLine.textContent = reliabilityLabel(country.reliability) || "";
+      if (contextLine.textContent) meta.append(contextLine);
+      if (reliabilityLine.textContent) meta.append(reliabilityLine);
     }
     if (exposure) exposure.textContent = formatExposure(country.exposure);
     if (exposureNote) {
-      const rankText = country.exposureRank ? `#${country.exposureRank} of ${country.nCountries}` : "";
       const percentileText = hasNumber(country.exposurePercentile)
         ? `${ordinal(country.exposurePercentile)} percentile`
         : "";
-      exposureNote.textContent = [rankText, percentileText].filter(Boolean).join(" · ");
+      exposureNote.textContent = percentileText;
     }
     if (employment) employment.textContent = formatEmployment(country.totalEmploymentK);
     bindOccupationSortButtons();
@@ -828,6 +727,21 @@
             "Income group: %{customdata[2]}<br>" +
             "Employment: %{customdata[3]:,.0f}k<extra></extra>",
         },
+        {
+          type: "choropleth",
+          locationmode: "ISO-3",
+          locations: [],
+          z: [],
+          text: [],
+          customdata: [],
+          colorscale: EXPOSURE_COLORSCALE,
+          zmin: exposureMin,
+          zmax: exposureMax,
+          marker: { line: { color: "rgba(139,35,50,0.98)", width: 1.45 } },
+          showscale: false,
+          hoverinfo: "skip",
+          showlegend: false,
+        },
       ],
       baseLayout({
         margin: { l: 0, r: 0, t: 0, b: 8 },
@@ -851,11 +765,40 @@
       const countryCode = event?.points?.[0]?.location;
       selectCountry(countryCode);
     });
+    el.on("plotly_hover", (event) => {
+      const point = event?.points?.[0];
+      if (!point || point.curveNumber !== 1) return;
+      const row = rows[point.pointIndex];
+      if (!row || !plotlyApi) return;
+      plotlyApi.restyle(
+        el,
+        {
+          locations: [[row.countryCode]],
+          z: [[row.exposure]],
+          text: [[row.countryName]],
+          customdata: [[[row.countryCode]]],
+        },
+        [2]
+      );
+    });
+    el.on("plotly_unhover", () => {
+      if (!plotlyApi) return;
+      plotlyApi.restyle(
+        el,
+        {
+          locations: [[]],
+          z: [[]],
+          text: [[]],
+          customdata: [[]],
+        },
+        [2]
+      );
+    });
   }
 
   function updateExposureFactorButtons() {
     document.querySelectorAll("[data-exposure-factor]").forEach((button) => {
-      const selected = exposureFactors.has(button.dataset.exposureFactor);
+      const selected = button.dataset.exposureFactor === exposureFactor;
       button.setAttribute("aria-pressed", selected ? "true" : "false");
     });
   }
@@ -865,67 +808,23 @@
     const predictors = data?.exposureDrivers?.predictors || {};
     if (!target) return;
 
-    const selectedKeys = Object.keys(predictors).filter((key) => exposureFactors.has(key));
+    const key = predictors[exposureFactor] ? exposureFactor : Object.keys(predictors)[0];
     target.replaceChildren();
-    if (selectedKeys.length > 1) {
-      const card = document.createElement("article");
-      card.className = "factor-description-card factor-description-card-combined";
-      card.style.setProperty("--factor-color", BLUE);
+    if (!key) return;
 
-      const title = document.createElement("strong");
-      title.textContent = `Combined predictor (${selectedKeys.length} factors)`;
+    const predictor = predictors[key];
+    const card = document.createElement("article");
+    card.className = "factor-description-card";
+    card.style.setProperty("--factor-color", FACTOR_COLORS[key] || BLUE);
 
-      const text = document.createElement("span");
-      text.textContent = COMBINED_FACTOR_DESCRIPTION;
+    const title = document.createElement("strong");
+    title.textContent = factorLabel(key, predictor);
 
-      const definitionList = document.createElement("div");
-      definitionList.className = "selected-factor-definitions";
-      definitionList.setAttribute(
-        "aria-label",
-        `Active factor definitions: ${selectedKeys
-          .map((key) => `${factorLabel(key, predictors[key])}: ${FACTOR_DESCRIPTIONS[key] || predictors[key]?.note || ""}`)
-          .join(" ")}`
-      );
-      definitionList.setAttribute("role", "list");
-      selectedKeys.forEach((key) => {
-        const row = document.createElement("div");
-        row.className = "selected-factor-definition";
-        row.setAttribute("role", "listitem");
-        row.style.setProperty("--factor-color", FACTOR_COLORS[key] || BLUE);
-        row.style.setProperty("--factor-tint", `${FACTOR_COLORS[key] || BLUE}17`);
+    const text = document.createElement("span");
+    text.textContent = FACTOR_DESCRIPTIONS[key] || predictor?.note || "";
 
-        const label = document.createElement("strong");
-        label.className = "selected-factor-name";
-        label.textContent = factorLabel(key, predictors[key]);
-
-        const definition = document.createElement("span");
-        definition.className = "selected-factor-definition-text";
-        definition.textContent = FACTOR_DESCRIPTIONS[key] || predictors[key]?.note || "";
-
-        row.append(label, definition);
-        definitionList.append(row);
-      });
-
-      card.append(title, text, definitionList);
-      target.append(card);
-      return;
-    }
-
-    selectedKeys.forEach((key) => {
-      const predictor = predictors[key];
-      const card = document.createElement("article");
-      card.className = "factor-description-card";
-      card.style.setProperty("--factor-color", FACTOR_COLORS[key] || BLUE);
-
-      const title = document.createElement("strong");
-      title.textContent = factorLabel(key, predictor);
-
-      const text = document.createElement("span");
-      text.textContent = FACTOR_DESCRIPTIONS[key] || predictor?.note || "";
-
-      card.append(title, text);
-      target.append(card);
-    });
+    card.append(title, text);
+    target.append(card);
   }
 
   function bindExposureFactorButtons(data) {
@@ -934,12 +833,7 @@
       button.dataset.bound = "true";
       button.addEventListener("click", async () => {
         const key = button.dataset.exposureFactor || "wcSharePct";
-        if (exposureFactors.has(key)) {
-          exposureFactors.delete(key);
-        } else {
-          exposureFactors.add(key);
-        }
-        if (exposureFactors.size === 0) exposureFactors.add("wcSharePct");
+        exposureFactor = key;
         updateExposureFactorButtons();
         updateFactorDescription(data);
         await renderExposureDrivers(data);
@@ -951,57 +845,42 @@
 
   async function renderExposureDrivers(data) {
     const drivers = data.exposureDrivers || {};
-    const selectedKeys = Object.keys(drivers.predictors || {}).filter((key) => exposureFactors.has(key));
-    const isCombined = selectedKeys.length > 1;
+    const primaryKey = drivers.predictors?.[exposureFactor] ? exposureFactor : "wcSharePct";
+    const primaryPredictor = drivers.predictors?.[primaryKey] || {};
+    const metric = drivers.metrics?.[primaryKey];
     const completeRows = (drivers.points || []).filter(
-      (row) => hasNumber(row.exposure) && selectedKeys.every((key) => hasNumber(row[key]))
+      (row) => hasNumber(row.exposure) && hasNumber(row[primaryKey])
     );
-    const percentileMaps = {};
-    selectedKeys.forEach((key) => {
-      const sortedValues = [...completeRows].sort((a, b) => a[key] - b[key]);
-      percentileMaps[key] = new Map(
-        sortedValues.map((row, rank) => [
-          row.countryCode,
-          sortedValues.length > 1 ? (rank / (sortedValues.length - 1)) * 100 : 50,
-        ])
-      );
-    });
+    const points = completeRows.map((row) => ({
+      ...row,
+      predictorValue: row[primaryKey],
+      predictorFormatted: formatFactorValue(primaryKey, row[primaryKey], primaryPredictor),
+    }));
 
-    const points = completeRows.map((row) => {
-      const percentiles = selectedKeys.map((key) => percentileMaps[key].get(row.countryCode));
-      const predictorPercentile =
-        percentiles.reduce((sum, value) => sum + value, 0) / Math.max(percentiles.length, 1);
-      return {
-        ...row,
-        predictorPercentile,
-        factorDetails: selectedKeys
-          .map((key, index) => {
-            const predictor = drivers.predictors[key];
-            const label = factorLabel(key, predictor);
-            const value = formatFactorValue(key, row[key], predictor);
-            return `${label}: ${value} (${percentiles[index].toFixed(0)}th pct.)`;
-          })
-          .join("<br>"),
-      };
-    });
-
-    const primaryKey = selectedKeys[0];
-    const primaryPredictor = drivers.predictors[primaryKey] || {};
-    const traceName = isCombined ? "Combined predictor" : factorLabel(primaryKey, primaryPredictor);
-    const percentileLabel = isCombined ? "Combined predictor percentile" : `${traceName} percentile`;
-    const color = isCombined ? BLUE : FACTOR_COLORS[primaryKey] || BLUE;
+    const traceName = factorLabel(primaryKey, primaryPredictor);
+    const xTitle = primaryPredictor.xTitle || traceName;
+    const color = FACTOR_COLORS[primaryKey] || BLUE;
     const fit = scatterFitTrace(
-      linearFitClient(points, "predictorPercentile", "exposure"),
+      metric?.fit,
       "Fit",
       color,
       { line: { color, width: 2.3 }, showlegend: false }
     );
+    const xValues = points.map((row) => row.predictorValue);
+    const fitValues = metric?.fit?.points?.map((point) => point.x).filter(Number.isFinite) || [];
+    const allX = [...xValues, ...fitValues];
+    const observedMin = Math.min(...allX);
+    const observedMax = Math.max(...allX);
+    const xStartsAtZero = primaryKey === "wcSharePct" || primaryKey === "internetPct";
+    const xPad = Math.max((observedMax - observedMin) * 0.04, primaryKey === "logGni" ? 0.08 : 0.02);
+    const xMin = xStartsAtZero ? 0 : observedMin - xPad;
+    const xMax = observedMax + xPad;
     const traces = [
       {
         type: "scatter",
         mode: "markers",
         name: traceName,
-        x: points.map((row) => row.predictorPercentile),
+        x: points.map((row) => row.predictorValue),
         y: points.map((row) => row.exposure),
         text: points.map((row) => row.countryName),
         cliponaxis: false,
@@ -1009,7 +888,7 @@
           row.countryCode,
           row.region,
           row.incomeGroup,
-          row.factorDetails,
+          row.predictorFormatted,
         ]),
         marker: {
           color,
@@ -1019,8 +898,7 @@
         },
         hovertemplate:
           "<b>%{text}</b> (%{customdata[0]})<br>" +
-          "%{customdata[3]}<br>" +
-          `${percentileLabel}: %{x:.0f}<br>` +
+          `${traceName}: %{customdata[3]}<br>` +
           "Exposure: %{y:.3f}<br>" +
           "Region: %{customdata[1]}<br>" +
           "Income group: %{customdata[2]}<extra></extra>",
@@ -1028,16 +906,7 @@
     ];
     if (fit) traces.push(fit);
 
-    const metricNotes = [];
-    if (isCombined) {
-      const combinedR2 = rSquaredClient(points, "predictorPercentile", "exposure");
-      if (hasNumber(combinedR2)) {
-        metricNotes.push(`Combined predictor (${selectedKeys.length} factors) R² = ${combinedR2.toFixed(2)}`);
-      }
-    } else {
-      const metric = drivers.metrics?.[primaryKey];
-      if (metric?.rSquared) metricNotes.push(`${traceName} R² = ${metric.rSquared.toFixed(2)}`);
-    }
+    const metricNotes = metric?.rSquared ? [`${traceName} R² = ${metric.rSquared.toFixed(2)}`] : [];
     const annotations = metricNotes.length
       ? [
           {
@@ -1062,11 +931,9 @@
       baseLayout({
         margin: { l: 64, r: 72, t: 28, b: 72 },
         xaxis: cartesianAxis({
-          title: percentileLabel,
-          range: [0, 102.5],
-          tickmode: "array",
-          tickvals: [0, 20, 40, 60, 80, 100],
-          ticksuffix: "",
+          title: xTitle,
+          range: [xMin, xMax],
+          ticksuffix: primaryPredictor.tickSuffix || "",
         }),
         yaxis: cartesianAxis({
           title: "National AI exposure",

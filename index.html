@@ -9,9 +9,9 @@
       content="Project page for The Jagged Global Economy: Frontier AI Unevenly Exposes National Economies."
     />
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="styles.css?v=remittance-lbn-label-20260528" />
+    <link rel="stylesheet" href="styles.css?v=feedback-revision-20260529" />
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" defer></script>
-    <script src="assets/site.js?v=remittance-lbn-label-20260528" defer></script>
+    <script src="assets/site.js?v=feedback-revision-20260529" defer></script>
   </head>
   <body>
     <main class="page">
@@ -185,43 +185,13 @@
 
       <hr />
 
-      <section id="findings">
-        <h2>Key Findings</h2>
-        <ol class="findings">
-          <li>
-            <strong>Exposure is regionally uneven because workforces differ.</strong>
-            Europe &amp; Central Asia are 50% more exposed than Sub-Saharan Africa,
-            and white-collar employment share strongly predicts national exposure.
-          </li>
-          <li>
-            <strong>Women are more exposed than men in 91% of studied countries.</strong>
-            The gender gap reflects where men and women work, especially women's
-            concentration in white-collar and sales occupations.
-          </li>
-          <li>
-            <strong>Exposure predicts observed AI adoption.</strong>
-            National exposure aligns with usage measures published by Anthropic,
-            OpenAI, and Microsoft, despite differences in each source's metric.
-          </li>
-          <li>
-            <strong>Remittances create an indirect exposure channel.</strong>
-            For remittance-dependent economies, household income can be tied to
-            the labor markets where migrants work, even when the workers' families
-            live elsewhere.
-          </li>
-        </ol>
-      </section>
-
-      <hr />
-
       <section id="white-collar" class="figure-section">
         <h2>Explaining National AI Exposure</h2>
         <div class="section-copy">
           <p>
-            Exposure is strongly tied to workforce composition. Use the buttons
-            below to toggle one or more explanations from the release data. The
-            x-axis shows where each country falls in the selected factor's
-            cross-country distribution.
+            Exposure is strongly tied to workforce composition. Choose one
+            explanation below to see how it relates to national exposure across
+            countries.
           </p>
         </div>
         <figure class="interactive-figure">
@@ -232,7 +202,7 @@
             <button type="button" data-exposure-factor="cmpNational" aria-pressed="false" style="--factor-color: #6f5d85; --factor-tint: #f1edf6;">Task profile</button>
           </div>
           <div id="factor-description" class="factor-description" aria-live="polite"></div>
-          <p class="factor-help">Percentile scale: 0 = lowest among measured countries; 100 = highest.</p>
+          <p class="factor-help">The x-axis uses the selected predictor's original units from the release data.</p>
           <div
             id="plot-white-collar"
             class="interactive-plot"
