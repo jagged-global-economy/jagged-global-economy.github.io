@@ -276,10 +276,10 @@ def build_exposure_drivers(national_lookup: dict[str, dict]) -> dict:
         },
         "internetPct": {
             "label": "Internet access",
-            "xTitle": "Individuals using the internet (%)",
+            "xTitle": "Internet users (% of population)",
             "tickSuffix": "%",
             "xMin": 0,
-            "note": "Country-level internet use from the release predictor panel.",
+            "note": "World Bank/ITU internet users as a share of total population; values can round to 100%.",
         },
         "cmpNational": {
             "label": "Cognitive vs physical",

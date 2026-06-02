@@ -1,5 +1,5 @@
 (async function () {
-  const DATA_URL = "assets/interactive_data.json?v=remittance-labels-20260528";
+  const DATA_URL = "assets/interactive_data.json?v=internet-denominator-20260602";
   const FONT_FAMILY = "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif";
   const BLUE = "#1f4b7a";
   const RED = "#8b2332";
@@ -20,7 +20,8 @@
   };
   const FACTOR_DESCRIPTIONS = {
     wcSharePct: "Share of workers in white-collar occupations (ISCO 1-4).",
-    internetPct: "Share of people using the internet.",
+    internetPct:
+      "World Bank/ITU internet users as a share of total population; values can round to 100%.",
     logGni: "Gross national income per person, adjusted for purchasing power.",
     cmpNational:
       "How much a country's jobs lean toward cognitive and information-processing tasks rather than physical or manual tasks.",
@@ -127,12 +128,12 @@
   function comparisonPhrase(delta, peerGroup) {
     if (!hasNumber(delta)) return null;
     if (peerGroup === "income") {
-      if (Math.abs(delta) < 0.005) return "Near income peers";
+      if (Math.abs(delta) < 0.005) return "Similar exposure to income peers";
       return delta > 0
         ? "More exposed than income peers"
         : "Less exposed than income peers";
     }
-    if (Math.abs(delta) < 0.005) return "Near regional average";
+    if (Math.abs(delta) < 0.005) return "Similar exposure to regional average";
     return delta > 0 ? "More exposed than regional average" : "Less exposed than regional average";
   }
 
