@@ -12,8 +12,8 @@ authors:
   - family-names: Bommasani
     given-names: Rishi
 date-released: "2026-05-15"
-url: "https://arulmabr.github.io/jagged-global-economy/"
-repository-code: "https://github.com/arulmabr/jagged-global-economy"
+url: "https://jagged-global-economy.github.io/"
+repository-code: "https://github.com/jagged-global-economy/jagged-global-economy.github.io"
 preferred-citation:
   type: article
   title: "The Jagged Global Economy: Frontier AI Unevenly Exposes National Economies"

@@ -4,7 +4,7 @@ This repository hosts the project page and release tables for:
 
 **The Jagged Global Economy: Frontier AI Unevenly Exposes National Economies**
 
-Site: https://arulmurugan.me/jagged-global-economy/
+Site: https://jagged-global-economy.github.io/
 
 ## Contents
 
